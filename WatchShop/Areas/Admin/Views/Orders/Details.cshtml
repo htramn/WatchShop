@@ -1,0 +1,59 @@
+﻿@model WatchShop.EntityFramework.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
