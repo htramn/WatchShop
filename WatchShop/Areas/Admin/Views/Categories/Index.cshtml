@@ -1,21 +1,20 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List category";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
-        <th></th>
+        <th>Update</th>
     </tr>
 
 @foreach (var item in Model) {

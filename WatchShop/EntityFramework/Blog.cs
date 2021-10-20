@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WatchShop.EntityFramework
 {
@@ -18,6 +19,7 @@ namespace WatchShop.EntityFramework
         [StringLength(300)]
         public string Image { get; set; }
 
+        [AllowHtml]
         [Column(TypeName = "ntext")]
         public string Content { get; set; }
 

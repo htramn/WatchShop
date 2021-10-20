@@ -1,21 +1,19 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Material>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List materials";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MaterialName)
         </th>
-        <th></th>
+        <th>Update</th>
     </tr>
 
 @foreach (var item in Model) {

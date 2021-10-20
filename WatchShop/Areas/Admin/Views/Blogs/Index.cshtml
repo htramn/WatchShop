@@ -11,25 +11,16 @@
 <table class="table table-bordered table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedPerson.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedPerson.UserName)
+            STT
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+           Created Person
         </th>
         <th>
             Update
@@ -39,26 +30,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedPerson.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedPerson.UserName)
+            @Html.DisplayFor(modelItem => item.BlogId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            @Html.DisplayFor(modelItem => item.CreatedPerson.UserName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
+      
         <td>
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BlogId }) |
             @Html.ActionLink("Details", "Details", new { id=item.BlogId }) |

@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Coupon>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List coupons";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Code)
@@ -24,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th></th>
+        <th>Update</th>
     </tr>
 
 @foreach (var item in Model) {

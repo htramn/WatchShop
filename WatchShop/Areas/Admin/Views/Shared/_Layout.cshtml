@@ -185,13 +185,22 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+         with font-awesome or any other icon font library -->
                         <!-- Dashboard -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <!-- User -->
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Users")" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    User
                                 </p>
                             </a>
                         </li>
@@ -372,6 +381,12 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
     <!-- Page specific script -->
+
+    <!--CKFINDER-->
+    <script src="~/Assets/Admin/CkFinder/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/Admin/CkFinder/ckfinder/ckfinder.js"></script>
+
+
     @RenderSection("script",false)
 </body>
 </html>

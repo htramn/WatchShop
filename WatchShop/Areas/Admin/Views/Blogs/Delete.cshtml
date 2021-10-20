@@ -1,32 +1,17 @@
 ﻿@model WatchShop.EntityFramework.Blog
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Blog";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Blog</h4>
+   
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedPerson.UserName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedPerson.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedPerson.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedPerson.UserName)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -53,19 +38,34 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            Created Date
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
+        <dt>
+            Created Person
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedPerson.UserName)
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+            Modified Date
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            Modified Person
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedPerson.UserName)
         </dd>
 
     </dl>

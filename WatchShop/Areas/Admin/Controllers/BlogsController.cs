@@ -53,6 +53,7 @@ namespace WatchShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                blog.CreatedDate = DateTime.Now;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,6 +90,7 @@ namespace WatchShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                blog.ModifiedDate = DateTime.Now;
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
