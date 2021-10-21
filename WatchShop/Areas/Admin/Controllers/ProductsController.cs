@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.Xml.Linq;
 using WatchShop.EntityFramework;
 
 namespace WatchShop.Areas.Admin.Controllers
@@ -140,6 +142,57 @@ namespace WatchShop.Areas.Admin.Controllers
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public JsonResult LoadImages(int id)
+        {
+            var product = db.Products.Find(id);
+            var images = product.MoreImages;
+            List<string> listImagesReturn = new List<string>();
+            if (images!=null)
+            {
+                XElement xImages = XElement.Parse(images);
+                foreach (XElement element in xImages.Elements())
+                {
+                    listImagesReturn.Add(element.Value);
+                }     
+            }
+            return Json(new
+            {
+                data = listImagesReturn
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult SaveImages(int id, string images)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var listImages = serializer.Deserialize<List<string>>(images);
+
+            XElement xElement = new XElement("Images");
+
+            foreach (var item in listImages)
+            {
+                var subStringItem = item.Substring(item.IndexOf("/Assets"));
+                xElement.Add(new XElement("Image", subStringItem));
+            }
+            try
+            {
+                var product = db.Products.Find(id);
+                product.MoreImages = xElement.ToString();
+                db.SaveChanges();
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
+
         }
 
         protected override void Dispose(bool disposing)
