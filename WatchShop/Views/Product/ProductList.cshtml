@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Product>
 
 @{
-    ViewBag.Title = "ProductList";
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,11 +15,11 @@
                     All Products
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Female">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Women">
                     Women
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Male">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Men">
                     Men
                 </button>
 
@@ -234,21 +234,21 @@
                         <div class="block2-pic hov-img0">
                             <img src=" @Html.DisplayFor(modelItem => item.Image)" alt="IMG-PRODUCT">
 
-                            <a href="#" class="block2-btn flex-c-m stext-103 cl0 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                            <a href="@Url.Action("AddItem","Cart", new { productId = item.ProductId,quantity=1})" class="block2-btn flex-c-m stext-103 cl0 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04 ">
+                                Add to Cart
                             </a>
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="@Url.Action("ProductDetail","Product", new { id = item.ProductId })" class="stext-106 cl8 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="@Url.Action("ProductDetail","Product", new { id = item.ProductId })" class="stext-106 cl8 hov-cl1 trans-04 js-name-b2 p-b-6 ">
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </a>
 
                                 <span class="stext-106 cl2">
                                     <span class="stext-105 text-decoration-line cl4"> @Html.DisplayFor(modelItem => item.OldPrice)</span>
 
-                                    &nbsp; @Html.DisplayFor(modelItem => item.SalePrice)
+                                    &nbsp;@WatchShop.Common.StringHelper.CurrencyFormat(item.SalePrice)
                                 </span>
                             </div>
                         </div>

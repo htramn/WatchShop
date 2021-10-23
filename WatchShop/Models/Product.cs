@@ -27,16 +27,16 @@ namespace WatchShop.EntityFramework
         [Column(TypeName = "money")]
         public Nullable<decimal> PromotionPrice { get; set; }
 
-        public string SalePrice {
+        public decimal? SalePrice {
             get
             {
                 if(PromotionPrice==null)
                 {
-                    return StringHelper.CurrencyFormat(Price);
+                    return Price;
                 }    
                 else
                 {
-                    return StringHelper.CurrencyFormat(PromotionPrice);
+                    return PromotionPrice;
                 }    
             }
         }

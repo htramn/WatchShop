@@ -22,6 +22,16 @@ namespace WatchShop.Controllers
             return View(products.ToList());
         }
 
+        public ActionResult PromotionProduct()
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.Color).Include(p => p.CreatedPerson)
+                                      .Include(p => p.Material).Include(p => p.ModifiedPerson).Include(p => p.Supplier)
+                                      .Where(p=>p.PromotionPrice!=null);
+            return View(products.ToList());
+        }
+
+
+
         // GET: Product/Details/5
         public ActionResult ProductDetail(int? id)
         {
