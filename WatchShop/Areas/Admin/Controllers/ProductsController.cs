@@ -55,7 +55,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,Description,Price,PromotionPrice,Quantity,Image,MoreImages,TopHot,FaceRadius,FaceThickness,WireLength,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,MaterialId,ColorId,SupplierId,CategoryId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,Description,Price,PromotionPrice,Quantity,Image,MoreImages,TopHot,FaceRadius,FaceThickness,WireLength,MaterialId,ColorId,SupplierId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -67,9 +67,7 @@ namespace WatchShop.Areas.Admin.Controllers
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             ViewBag.ColorId = new SelectList(db.Colors, "ColorId", "ColorName", product.ColorId);
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", product.CreatedBy);
             ViewBag.MaterialId = new SelectList(db.Materials, "MaterialId", "MaterialName", product.MaterialId);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", product.ModifiedBy);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", product.SupplierId);
             return View(product);
         }
@@ -88,9 +86,7 @@ namespace WatchShop.Areas.Admin.Controllers
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             ViewBag.ColorId = new SelectList(db.Colors, "ColorId", "ColorName", product.ColorId);
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", product.CreatedBy);
             ViewBag.MaterialId = new SelectList(db.Materials, "MaterialId", "MaterialName", product.MaterialId);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", product.ModifiedBy);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", product.SupplierId);
             return View(product);
         }
@@ -100,7 +96,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Description,Price,PromotionPrice,Quantity,Image,MoreImages,TopHot,FaceRadius,FaceThickness,WireLength,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,MaterialId,ColorId,SupplierId,CategoryId")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,CreatedDate,CreatedBy,ProductName,Description,Price,PromotionPrice,Quantity,Image,MoreImages,TopHot,FaceRadius,FaceThickness,WireLength,MaterialId,ColorId,SupplierId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +109,6 @@ namespace WatchShop.Areas.Admin.Controllers
             ViewBag.ColorId = new SelectList(db.Colors, "ColorId", "ColorName", product.ColorId);
             ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", product.CreatedBy);
             ViewBag.MaterialId = new SelectList(db.Materials, "MaterialId", "MaterialName", product.MaterialId);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", product.ModifiedBy);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "SupplierId", "SupplierName", product.SupplierId);
             return View(product);
         }

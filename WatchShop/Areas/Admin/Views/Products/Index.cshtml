@@ -21,13 +21,13 @@
                         Product Name
                     </th>
                     <th>
-                        Description
+                        Image
                     </th>
                     <th>
                         Price
                     </th>
                     <th>
-                        Promotion Price
+                        Category
                     </th>
                     <th>
                         Quantity
@@ -52,13 +52,14 @@
                             @Html.DisplayFor(modelItem => item.ProductName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
+                            <img width="150"  src=" @Html.DisplayFor(modelItem => item.Image)" />
+                           
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Price)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PromotionPrice)
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Quantity)
