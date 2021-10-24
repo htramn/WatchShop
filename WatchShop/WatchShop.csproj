@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SuppliersController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Common\CommonConst.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2845,6 +2846,7 @@
     <Content Include="Assets\Client\images\thumb-01.jpg" />
     <Content Include="Assets\Client\images\thumb-02.jpg" />
     <Content Include="Assets\Client\images\thumb-03.jpg" />
+    <Content Include="Assets\Client\js\controller\cartController.js" />
     <Content Include="Assets\Client\js\main.js" />
     <Content Include="Assets\Client\js\map-custom.js" />
     <Content Include="Assets\Client\js\slick-custom.js" />
@@ -3170,15 +3172,14 @@
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Shared\ProductDetailModal.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Client\js\controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Product\PromotionProduct.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\Breadcrum.cshtml" />
+    <Content Include="Views\Shared\HeaderCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110170832387_firstCommit.resx">

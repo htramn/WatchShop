@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using WatchShop.Common;
 using WatchShop.EntityFramework;
 using WatchShop.Models;
 
@@ -12,11 +14,9 @@ namespace WatchShop.Controllers
     {
         private WatchShopContext db = new WatchShopContext();
         // GET: Cart
-        private const string CartSession = "CartSession";
-        // GET: Cart
         public ActionResult Index()
         {
-            var cart = Session[CartSession];
+            var cart = Session[CommonConst.CartSession];
             var list = new List<CartItem>();
             if (cart != null)
             {
@@ -28,7 +28,7 @@ namespace WatchShop.Controllers
         public ActionResult AddItem(int productId, int quantity)
         {
             Product product = db.Products.Find(productId);
-            var cart = Session[CartSession];
+            var cart = Session[CommonConst.CartSession];
             if (cart != null)
             {
                 //ép kiểu
@@ -52,7 +52,7 @@ namespace WatchShop.Controllers
                     list.Add(item);
                 }
                 //Gán vào session
-                Session[CartSession] = list;
+                Session[CommonConst.CartSession] = list;
             }
             else
             {
@@ -63,9 +63,51 @@ namespace WatchShop.Controllers
                 var list = new List<CartItem>();
                 list.Add(item);
                 //Gán vào session
-                Session[CartSession] = list;
+                Session[CommonConst.CartSession] = list;
             }
             return RedirectToAction("Index");
         }
+
+        public JsonResult DeleteAll()
+        {
+            Session[CommonConst.CartSession] = null;
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+        public JsonResult Delete(long id)
+        {
+            var sessionCart = (List<CartItem>)Session[CommonConst.CartSession];
+            sessionCart.RemoveAll(x => x.Product.ProductId == id);
+            Session[CommonConst.CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public JsonResult Update(string cartModel)
+        {
+            var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
+            var sessionCart = (List<CartItem>)Session[CommonConst.CartSession];
+
+            foreach (var item in sessionCart)
+            {
+                var jsonItem = jsonCart.SingleOrDefault(x => x.Product.ProductId == item.Product.ProductId);
+                if (jsonItem != null)
+                {
+                    item.Quantity = jsonItem.Quantity;
+                }
+            }
+            Session[CommonConst.CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+
+
     }
 }

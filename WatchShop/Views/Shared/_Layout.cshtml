@@ -132,10 +132,7 @@
                         </div>
 
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-                           
-                            <a class="cl2 hov-cl1" href="@Url.Action("Index","Cart")"> <i class="zmdi zmdi-shopping-cart"></i></a>
-                        </div>
+                        @{ Html.RenderAction("HeaderCart", "Home");}
 
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-user">
                             <a class="cl2 hov-cl1" href="login.html"><i class="zmdi zmdi-account"></i></a>
@@ -226,7 +223,7 @@
     </header>
 
     <!-- Cart -->
-    <div class="wrap-header-cart js-panel-cart">
+    @*<div class="wrap-header-cart js-panel-cart">
         <div class="s-full js-hide-cart"></div>
 
         <div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -308,7 +305,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
 
@@ -526,6 +523,7 @@
             var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
             $(this).on('click', function () {
                 swal(nameProduct, "is added to cart !", "success");
+                location.reload();
             });
         });
 
