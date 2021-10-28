@@ -6,15 +6,57 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using WatchShop.Common;
+using WatchShop.DAO;
 using WatchShop.EntityFramework;
 using WatchShop.Models;
+using WatchShop.ViewModel;
 
 namespace WatchShop.Controllers
 {
     public class UserController : Controller
     {
-        WatchShopContext db = new WatchShopContext();
         // GET: User
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDAO();
+                var result = dao.Login(model.UserName, model.Password);
+                if (result == 1)
+                {
+                    var user = dao.GetById(model.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.UserName;
+                    userSession.UserID = user.UserId;
+                    Session.Add(CommonConst.USER_SESSION, userSession);
+                    return Redirect("/");
+                }
+                else if (result == 0)
+                {
+                    ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                }
+                else if (result == -1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đang bị khoá.");
+                }
+                else if (result == -2)
+                {
+                    ModelState.AddModelError("", "Mật khẩu không đúng.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "đăng nhập không đúng.");
+                }
+            }
+            return View(model);
+        }
         public ActionResult Register()
         {
             return View();
@@ -26,11 +68,12 @@ namespace WatchShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.Users.Count(x => x.UserName == model.UserName) > 0)
+                var dao = new UserDAO();
+                if (dao.CheckUserName(model.UserName))
                 {
                     ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
                 }
-                else if (db.Users.Count(x => x.Email == model.Email) > 0)
+                else if (dao.CheckEmail(model.Email))
                 {
                     ModelState.AddModelError("", "Email đã tồn tại");
                 }
@@ -45,7 +88,7 @@ namespace WatchShop.Controllers
                     user.Address = model.Address;
                     user.CreatedDate = DateTime.Now;
                     user.Status = true;
-                    user.UserRoleId = Common.CommonConst.MemberId;
+                    user.UserRoleId = CommonConst.MemberId;
                     if (!string.IsNullOrEmpty(model.ProvinceID))
                     {
                         user.ProvinceId = int.Parse(model.ProvinceID);
@@ -56,15 +99,13 @@ namespace WatchShop.Controllers
                     }
                     try
                     {
-                        db.Users.Add(user);
-                        db.SaveChanges();
+                        dao.Insert(user);
                         ViewBag.Success = "Đăng ký thành công";
                         model = new Register();
                     }
                     catch (DbEntityValidationException ex)
                     {
-                        ModelState.AddModelError("", "Đăng ký không thành công.");
-
+                        ViewBag.Failed = "Đăng ký không thành công.";
                         //debug
                         foreach (var eve in ex.EntityValidationErrors)
                         {
@@ -80,11 +121,7 @@ namespace WatchShop.Controllers
                     }
                 }
                 MvcCaptcha.ResetCaptcha("registerCapcha");
-            }
-            else
-            {
-
-            }    
+            } 
             return View(model);
         }
         public JsonResult LoadProvince()

@@ -35,6 +35,10 @@
                     {
                         <div class="alert alert-success">@ViewBag.Success</div>
                     }
+                    if (ViewBag.Failed != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Failed</div>
+                    }
                     <div class="row p-b-25">
                         <div class="col-sm-6 p-b-5">
                             @Html.LabelFor(model => model.UserName, new { @class = "stext-102 cl3" })

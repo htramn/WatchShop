@@ -1,0 +1,89 @@
+﻿@model WatchShop.Models.Login
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Login
+    </h2>
+</section>
+
+
+<!-- Content page -->
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Đăng nhập
+
+                    </h4>
+                    <p class=" cl6  p-t-18">Bạn đã đăng ký với WatchShop? Nhập thông tin chi tiết vào bên dưới để truy cập tài khoản của bạn</p>
+                    <br />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "stext-111 cl2 plh3 size-116 p-l-30 p-r-30", @placeholder = "Tên đăng nhập" })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        @Html.PasswordFor(model => model.Password, new { @class = "stext-111 cl2 plh3 size-116 p-l-30 p-r-30", @placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <p class="cl1">Quên mật khẩu?</p>
+                    <br />
+                    <input type="submit" value="Đăng nhập" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" />
+                }
+            </div>
+
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <div class="flex-w w-full  p-b-42">
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Đăng ký
+                    </h4>
+                    <div class=" p-t-2">
+
+                        <p class="size-180 cl6 p-t-18">
+
+                            Bạn chưa đăng ký với WatchShop? Hãy thiết lập tài khoản của bạn!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-w w-full p-b-42">
+
+
+                    <div class="size-212 p-t-2">
+                        <span class="mtext-110 cl2">
+                            Tại sao bạn nên đăng ký?
+                        </span>
+
+                        <p class="stext-115 cl1 size-180 p-t-5">
+                            Tiến hành đặt hàng.
+                        </p>
+                        <p class="stext-115 cl1 size-180 p-t-5">
+                            Các chương trình ưu đãi.
+                        </p>
+                        <p class="stext-115 cl1 size-180 p-t-5 p-b-11">
+                           Xem lại lịch sử mua hàng.
+                        </p>
+                    </div>
+                </div>
+
+                @Html.ActionLink("Đăng ký","Register","User",new {@class= "flex-c-m stext-101  cl10 size-121 bg0 bor17 hov-btn1 p-lr-15 trans-04 pointer" })
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

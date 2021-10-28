@@ -41,7 +41,12 @@ namespace WatchShop.EntityFramework
 
         public DateTime? CreatedDate { get; set; }
 
-        [ForeignKey("UserRoleId")]
+        public string CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public string ModifiedBy { get; set; }
+
         public virtual UserRole UserRole { get; set; }
         public ICollection<Order> Orders { get; set; }
     }

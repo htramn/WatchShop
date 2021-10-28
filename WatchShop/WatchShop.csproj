@@ -69,6 +69,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -163,24 +166,29 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Common\CommonConst.cs" />
     <Compile Include="Common\StringHelper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="ViewModel\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\ContactEmail.cs" />
     <Compile Include="Models\Coupon.cs" />
-    <Compile Include="Models\District.cs" />
+    <Compile Include="ViewModel\District.cs" />
+    <Compile Include="ViewModel\Login.cs" />
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Province.cs" />
-    <Compile Include="Models\Register.cs" />
+    <Compile Include="ViewModel\Province.cs" />
+    <Compile Include="ViewModel\Register.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\User.cs" />
@@ -195,6 +203,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\CkFinder\ckeditor\adapters\jquery.js" />
@@ -3192,7 +3201,10 @@
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Shared\ProductDetailModal.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Payment\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
@@ -3201,6 +3213,8 @@
     <Content Include="Views\Shared\Breadcrum.cshtml" />
     <Content Include="Views\Shared\HeaderCart.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110170832387_firstCommit.resx">

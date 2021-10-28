@@ -18,7 +18,7 @@ namespace WatchShop.EntityFramework
         [ForeignKey("Employee")]
         public int? EmployeeId { get; set; }
 
-        public DataType OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [ForeignKey("OrderStatus")]
         public int StatusId { get; set; }
@@ -26,6 +26,11 @@ namespace WatchShop.EntityFramework
 
         [ForeignKey("Coupon")]
         public int? CouponId{ get; set; }
+
+        [StringLength(500)]
+        public string Note { get; set; }
+
+        public decimal? TotalPayment { get; set; }
 
         public virtual OrderStatus OrderStatus { get; set; }
 

@@ -93,3 +93,5 @@ D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\System.Data.SQLite.xml
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\CaptchaMvc.dll
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\CaptchaMvc.pdb
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\CaptchaMvc.xml
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.dll
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.xml
