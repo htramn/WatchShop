@@ -119,10 +119,5 @@ namespace WatchShop.EntityFramework
         public ICollection<OrderDetail> orderDetails { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
-
-        //a movie can belong to many genre
-        //public virtual ICollection<Genre> Genres { get; set; }
-
-        //public virtual ICollection<Actor> Actors { get; set; }
     }
 }

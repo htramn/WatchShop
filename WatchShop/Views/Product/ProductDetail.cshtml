@@ -7,26 +7,9 @@
 @section Script
 {
     @* Xử lý thêm vào giỏ hàng *@
-<script>
-          $(document).ready(function () {
-              $("#btnAddToCart").click(function (event) {
-                  event.preventDefault();
-                  var productid = $(this).attr("data-productid");
-                  var quantity = $("#txtquantity").val();
-                  $.ajax({
-                      type: "GET",
-                      url:"/Cart/AddItem",
-                      data: {
-                          productId: productid,
-                          quantity:quantity
-                      },
-                      
-                  });
-              });
+<script src="~/Assets/Client/js/controller/addToCart.js"></script>
 
-          });
-</script>
-    }
+}
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -156,14 +139,18 @@
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
-                                    </div>
-
-
+                                    </div>                            
+                                </div>
+                            </div>
+                            <div class="flex-w m-l-78 p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
                                     <button data-productid="@Model.ProductId" id="btnAddToCart" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Add to cart
                                     </button>
+
                                 </div>
                             </div>
+
                         </div>
 
                         <!--  -->

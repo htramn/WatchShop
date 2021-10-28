@@ -9,7 +9,7 @@ namespace WatchShop.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(WatchShop.EntityFramework.WatchShopContext context)

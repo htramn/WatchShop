@@ -18,7 +18,7 @@ namespace WatchShop.EntityFramework
         [StringLength(32)]
         public string Password { get; set; }
 
-        public int UserRoleId { set; get; }
+        public int? UserRoleId { set; get; }
 
         [StringLength(300)]
         public string Name { get; set; }
@@ -28,11 +28,9 @@ namespace WatchShop.EntityFramework
 
         [DataType(DataType.EmailAddress)]
         [MaxLength(50)]
-        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Please enter correct email!")]
         public string Email { get; set; }
 
-        [StringLength(11)]
-        [RegularExpression(@"/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/", ErrorMessage = "Please enter correct phone!")]
+        [StringLength(20)]
         public string Phone { get; set; }
 
         public int? ProvinceId { set; get; }
@@ -41,6 +39,9 @@ namespace WatchShop.EntityFramework
 
         public bool Status { get; set; }
 
+        public DateTime? CreatedDate { get; set; }
+
+        [ForeignKey("UserRoleId")]
         public virtual UserRole UserRole { get; set; }
         public ICollection<Order> Orders { get; set; }
     }

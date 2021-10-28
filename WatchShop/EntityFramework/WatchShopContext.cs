@@ -29,5 +29,6 @@ namespace WatchShop.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ContactEmail> contactEmails { get; set; }
+
     }
 }

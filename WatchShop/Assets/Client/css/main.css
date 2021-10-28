@@ -97,6 +97,16 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
 }
 
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url('../fonts/Montserrat/Montserrat-Medium.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('../fonts/Montserrat/Montserrat-Light.ttf');
+}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
@@ -365,16 +375,16 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   margin: 0px 4px 0px 14px;
 }
 
-.main-menu > li > a {
-  font-family: Poppins-Medium;
-  font-size: 14px;
-  color: #333;
-  padding: 5px 0px;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
+    .main-menu > li > a {
+        font-family: Montserrat-Regular;
+        font-size: 14px;
+        color: #333;
+        padding: 5px 0px;
+        transition: all 0.4s;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+    }
 
 .header-v3 .main-menu > li > a {
   color: #fff;
@@ -1938,6 +1948,7 @@ input.num-product::-webkit-inner-spin-button {
         padding: 0px 15px;
         width: 120px;
         font-size: 15px;
+        text-align: center;
     }
 
     .table-shopping-cart .column-4 {
@@ -1949,7 +1960,7 @@ input.num-product::-webkit-inner-spin-button {
     .table-shopping-cart .column-5 {
         width: 172px;
         padding:0px 15px;
-        text-align: left;
+        text-align: center;
         font-size: 15px;
     }
 
