@@ -33,9 +33,9 @@ namespace WatchShop.EntityFramework
         [StringLength(20)]
         public string Phone { get; set; }
 
-        public int? ProvinceId { set; get; }
+        public string Province { set; get; }
 
-        public int? DistrictId { set; get; }
+        public string District { set; get; }
 
         public bool Status { get; set; }
 

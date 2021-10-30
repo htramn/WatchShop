@@ -106,8 +106,5 @@ namespace WatchShop.Controllers
                 status = true
             });
         }
-
-
-
     }
 }

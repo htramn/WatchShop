@@ -28,6 +28,7 @@ namespace WatchShop.EntityFramework
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<ContactEmail> contactEmails { get; set; }
 
     }

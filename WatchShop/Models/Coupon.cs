@@ -12,11 +12,15 @@ namespace WatchShop.EntityFramework
         [Key]
         public int CouponId { get; set; }
 
+        [Index(IsUnique = true)]
         [StringLength(300)]
         public string Code { get; set; }
 
-        [Column(TypeName = "float")]
-        public float Percent { get; set; }
+        [Range(1,100)]
+        public decimal? Discount { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal? MaxDiscount { get; set; }
 
         public long Quantity { get; set; }
 

@@ -5,14 +5,14 @@ namespace WatchShop.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WatchShop.EntityFramework.WatchShopContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntityFramework.WatchShopContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(WatchShop.EntityFramework.WatchShopContext context)
+        protected override void Seed(EntityFramework.WatchShopContext context)
         {
             //  This method will be called after migrating to the latest version.
 

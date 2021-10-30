@@ -1,0 +1,223 @@
+﻿@model WatchShop.ViewModel.ConfirmPayment
+    @using WatchShop.EntityFramework;
+@{
+    ViewBag.Title = "Xác nhận thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var deliveryDate = DateTime.Now.AddDays(3).ToString("dd/MM/yyyy");
+    User user = ViewBag.User;
+}
+
+@section CSS{
+    <style>
+        #order-heading {
+            position: relative;
+            border-top-left-radius: 25px;
+            max-width: 800px;
+            padding-top: 20px;
+            margin: 30px auto;
+        }
+
+        #order-heading .text-uppercase {
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 600
+        }
+
+        #order-heading .h4 {
+            font-weight: 600
+        }
+
+        #order-heading .h4+div p {
+            font-size: 0.8rem;
+            color: #777
+        }
+
+        .close {
+            padding: 10px 15px;
+            background-color: #777;
+            border-radius: 50%;
+            position: absolute;
+            right: -15px;
+            top: -20px
+        }
+
+        .wrapper {
+            padding: 0px 50px 50px;
+            max-width: 800px;
+            margin: 0px auto 40px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px
+        }
+        .table th {
+            border-top: none
+        }
+
+        .table thead tr.text-uppercase th {
+            font-size: 0.8rem;
+            padding-left: 0px;
+            padding-right: 0px
+        }
+
+        .table tbody tr th,
+        .table tbody tr td {
+            font-size: 0.9rem;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-bottom: 5px
+        }
+
+        .table-responsive {
+            height: 100px
+        }
+
+        .list div b {
+            font-size: 0.8rem
+        }
+
+        .list .order-item {
+            font-weight: 600;
+            color: #6db3ec
+        }
+
+        .list:hover {
+            background-color: #f4f4f4;
+            cursor: pointer;
+            border-radius: 5px
+        }
+
+        label {
+            margin-bottom: 0;
+            padding: 0;
+            font-weight: 900
+        }
+
+        button.btn {
+            font-size: 0.9rem;
+            background-color: #66cdaa
+        }
+
+        button.btn:hover {
+            background-color: #5cb99a
+        }
+
+        .price {
+            color: #5cb99a;
+            font-weight: 700
+        }
+
+        p.text-justify {
+            font-size: 0.9rem;
+            margin: 0
+        }
+
+        .row {
+            margin: 0px
+        }
+
+        .subscriptions {
+            border: 1px solid #ddd;
+            border-left: 5px solid #ffa500;
+            padding: 10px
+        }
+
+        .subscriptions div {
+            font-size: 0.9rem
+        }
+
+    </style>
+}
+
+<div id="order-heading" class="d-flex border flex-column justify-content-center wrapper m-b-20">
+    <div class="text-uppercase">
+        <p>Xác nhận đơn hàng</p>
+    </div>
+    <div class="row border rounded p-1 my-3">
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column stext-104 align-items start">
+
+                <b>Thông tin người nhận:</b>
+                <p class="text-justify pt-2">
+                    Họ tên: @user.Name <br />SĐT: @user.Phone
+                    <br />
+                    Địa chỉ: @user.Address, @user.District, <br /> @user.Province
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column stext-104 align-items start">
+                <b>Thời gian giao hàng dự kiến:</b>
+                <p class="text-justify pt-2">@deliveryDate</p>
+            </div>
+        </div>
+    </div>
+    <div class=" p-b-10 ">
+        <table class="table">
+            <thead>
+                <tr class="text-uppercase stext-104">
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col" class="text-right">Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListProduct)
+                {
+                    <tr>
+                        <td class="stext-104">@item.Product.ProductName</td>
+                        <td class="stext-104"> @WatchShop.Common.StringHelper.CurrencyFormat(item.Product.SalePrice)</td>
+                        <td class="text-right stext-104"><b>x @item.Quantity</b></td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="bor12 m-tb-20">
+
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted">Tạm tính</div>
+        <div class="ml-auto"> <label> @WatchShop.Common.StringHelper.CurrencyFormat(Model.Total)</label> </div>
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center pl-3">
+        <div class="text-muted">Phương thức thanh toán</div>
+        <div class="ml-auto">
+            @Html.DropDownList("MethodId", null, htmlAttributes: new { @class = "size-111 bor4 stext-104 cl2 p-lr-10" })
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted stext-104">Phí vận chuyển</div>
+        <div class="ml-auto stext-104"> <label>Free</label> </div>
+    </div>
+
+    <div class="d-flex stext-104 justify-content-start align-items-center pb-4 border-bottom">
+        <div class="text-muted">
+            @Html.TextBoxFor(model => model.Code, new { @class = "stext-104 cl2 plh4 size-117 bor13 p-lr-15 m-r-10 m-tb-5", @placeholder = "Mã giảm giá" })
+
+        </div>
+        <button class="flex-c-m stext-104 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">Áp dụng</button>
+        <div class="ml-auto price stext-104"> -@WatchShop.Common.StringHelper.CurrencyFormat(Model.Discount) </div>
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
+        @Html.TextAreaFor(model => model.Note, new { @class = "stext-104 size-110 cl2 plh4 p-t-10 bor4 p-lr-10 m-r-10 m-tb-5", @placeholder = "Ghi chú..." })
+    </div>
+    <div class="bor12 m-tb-20">
+
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+        <div class="text-muted h5"> Tổng thanh toán </div>
+        <div class="ml-auto h5"> @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment) </div>
+    </div>
+
+    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+        <div class="text-muted"> </div>
+        <a href="@Url.Action("ConfirmPayment","Payment")" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+            Đặt hàng
+        </a>
+    </div>
+
+</div>
+
+

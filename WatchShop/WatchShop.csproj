@@ -174,12 +174,14 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="ViewModel\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\ContactEmail.cs" />
     <Compile Include="Models\Coupon.cs" />
+    <Compile Include="ViewModel\ConfirmPayment.cs" />
     <Compile Include="ViewModel\District.cs" />
     <Compile Include="ViewModel\Login.cs" />
     <Compile Include="Models\Material.cs" />
@@ -3203,7 +3205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -3215,6 +3216,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Payment\ConfirmPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110170832387_firstCommit.resx">

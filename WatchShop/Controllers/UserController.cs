@@ -91,11 +91,11 @@ namespace WatchShop.Controllers
                     user.UserRoleId = CommonConst.MemberId;
                     if (!string.IsNullOrEmpty(model.ProvinceID))
                     {
-                        user.ProvinceId = int.Parse(model.ProvinceID);
+                        user.Province = model.ProvinceID;
                     }
                     if (!string.IsNullOrEmpty(model.DistrictID))
                     {
-                        user.DistrictId = int.Parse(model.DistrictID);
+                        user.District = model.DistrictID;
                     }
                     try
                     {
@@ -161,7 +161,6 @@ namespace WatchShop.Controllers
                 district.Name = item.Attribute("value").Value;
                 district.ProvinceID = int.Parse(xElement.Attribute("id").Value);
                 list.Add(district);
-
             }
             return Json(new
             {

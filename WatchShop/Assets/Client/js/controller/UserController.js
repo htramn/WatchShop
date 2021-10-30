@@ -6,7 +6,7 @@
     },
     registerEvent: function () {
         $('#ddlProvince').off('change').on('change', function () {
-            var id = $(this).val();
+            var id = $(this).find(':selected').attr("data-id");
             if (id != '') {
                 user.loadDistrict(parseInt(id));
             }
@@ -26,7 +26,7 @@
                     var html = '<option value="">--Chọn tỉnh thành--</option>';
                     var data = response.data;
                     $.each(data, function (i, item) {
-                        html += '<option value="' + item.ID + '">' + item.Name + '</option>'
+                        html += '<option data-id="'+item.ID+'" value="' + item.Name + '">' + item.Name + '</option>'
                     });
                     $('#ddlProvince').html(html);
                 }
@@ -44,7 +44,7 @@
                     var html = '<option value="">--Chọn quận huyện--</option>';
                     var data = response.data;
                     $.each(data, function (i, item) {
-                        html += '<option value="' + item.ID + '">' + item.Name + '</option>'
+                        html += '<option value="' + item.Name + '">' + item.Name + '</option>'
                     });
                     $('#ddlDistrict').html(html);
                 }
