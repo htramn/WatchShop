@@ -2877,6 +2877,7 @@
     <Content Include="Assets\Client\images\thumb-03.jpg" />
     <Content Include="Assets\Client\js\controller\addToCart.js" />
     <Content Include="Assets\Client\js\controller\cartController.js" />
+    <Content Include="Assets\Client\js\controller\PaymentController.js" />
     <Content Include="Assets\Client\js\controller\UserController.js" />
     <Content Include="Assets\Client\js\main.js" />
     <Content Include="Assets\Client\js\map-custom.js" />

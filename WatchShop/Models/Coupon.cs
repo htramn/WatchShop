@@ -22,8 +22,6 @@ namespace WatchShop.EntityFramework
         [Column(TypeName = "money")]
         public decimal? MaxDiscount { get; set; }
 
-        public long Quantity { get; set; }
-
         public bool Status { get; set; }
 
     }

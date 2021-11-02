@@ -16,7 +16,7 @@ namespace WatchShop.ViewModel
 
         
         [StringLength(300)]
-        public string Code { get; set; }
+        public int? CouponId { get; set; }
        
         public int? MethodId { get; set; }
 
@@ -39,7 +39,7 @@ namespace WatchShop.ViewModel
         {
             get
             {
-                if (Code == null)
+                if (CouponId == null)
                 {
                     return 0;
                 }
@@ -58,7 +58,7 @@ namespace WatchShop.ViewModel
 
             }
         }
-        [ForeignKey("Code")]
+        [ForeignKey("CouponId")]
         public virtual Coupon Coupon { get; set; }
 
         [ForeignKey("MethodId")]

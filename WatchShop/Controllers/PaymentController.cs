@@ -15,6 +15,33 @@ namespace WatchShop.Controllers
     {
         WatchShopContext db = new WatchShopContext();
         // GET: Payment
+        public ActionResult AddCoupon(string code)
+        {
+            if(code==null)
+            {
+                Session[CommonConst.CouponSession] = "";
+            }
+            else
+            {
+                var coupon = db.Coupons.SingleOrDefault(c => c.Code == code);
+                if (coupon == null)
+                {
+                    ModelState.AddModelError("", "Mã giảm giá không hợp lệ");
+                }
+                else
+                {
+                    if (coupon.Status == true)
+                    {
+                        Session[CommonConst.CouponSession] = coupon;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Mã giảm giá đã hết hạn");
+                    }
+                }
+            }  
+            return RedirectToAction("ConfirmPayment");
+        }
         [HttpGet]
         public ActionResult ConfirmPayment()
         {
@@ -24,8 +51,16 @@ namespace WatchShop.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            var coupon = Session[CommonConst.CouponSession];
+             
+          
             ConfirmPayment confirmPayment = new ConfirmPayment();
             confirmPayment.ListProduct = list;
+            if (coupon != null)
+            {
+                confirmPayment.Coupon =(Coupon)coupon;
+                confirmPayment.CouponId = confirmPayment.Coupon.CouponId;
+            }
 
             //Lấy ra user đã lưu ở session
             var session = (UserLogin)Session[CommonConst.USER_SESSION];

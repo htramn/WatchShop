@@ -126,11 +126,15 @@
 
     </style>
 }
+@section Script{
+    <script src="~/Assets/Client/js/controller/PaymentController.js"></script>
+    }
 
 <div id="order-heading" class="d-flex border flex-column justify-content-center wrapper m-b-20">
     <div class="text-uppercase">
         <p>Xác nhận đơn hàng</p>
     </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="row border rounded p-1 my-3">
         <div class="col-md-6 py-3">
             <div class="d-flex flex-column stext-104 align-items start">
@@ -194,10 +198,10 @@
 
     <div class="d-flex stext-104 justify-content-start align-items-center pb-4 border-bottom">
         <div class="text-muted">
-            @Html.TextBoxFor(model => model.Code, new { @class = "stext-104 cl2 plh4 size-117 bor13 p-lr-15 m-r-10 m-tb-5", @placeholder = "Mã giảm giá" })
+            @Html.TextBoxFor(model => model.Coupon.Code, new { @class = "stext-104 cl2 plh4 size-117 bor13 p-lr-15 m-r-10 m-tb-5 txtCoupon", @placeholder = "Mã giảm giá" })
 
         </div>
-        <button class="flex-c-m stext-104 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">Áp dụng</button>
+        <button id="btnAddCoupon" class="flex-c-m stext-104 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">Áp dụng</button>
         <div class="ml-auto price stext-104"> -@WatchShop.Common.StringHelper.CurrencyFormat(Model.Discount) </div>
     </div>
     <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
