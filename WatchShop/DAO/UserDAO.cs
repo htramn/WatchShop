@@ -60,7 +60,8 @@ namespace WatchShop.DAO
 
         public User GetById(string userName)
         {
-            return db.Users.SingleOrDefault(x => x.UserName == userName);
+            var User= db.Users.SingleOrDefault(x => x.UserName == userName);
+            return User; 
         }
         public User ViewDetail(int id)
         {

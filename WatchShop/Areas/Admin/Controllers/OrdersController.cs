@@ -17,7 +17,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Coupon).Include(o => o.Customer).Include(o => o.Employee).Include(o => o.OrderStatus);
+            var orders = db.Orders.Include(o => o.Coupon).Include(o => o.User).Include(o => o.OrderStatus);
             return View(orders.ToList());
         }
 
@@ -61,9 +61,7 @@ namespace WatchShop.Areas.Admin.Controllers
             }
 
             ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-            ViewBag.CustomerId = new SelectList(db.Users, "UserId", "UserName", order.CustomerId);
-            ViewBag.EmployeeId = new SelectList(db.Users, "UserId", "UserName", order.EmployeeId);
-            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
+             ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
             return View(order);
         }
 
@@ -80,9 +78,7 @@ namespace WatchShop.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-            ViewBag.CustomerId = new SelectList(db.Users, "UserId", "UserName", order.CustomerId);
-            ViewBag.EmployeeId = new SelectList(db.Users, "UserId", "UserName", order.EmployeeId);
-            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
+          ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
             return View(order);
         }
 
@@ -100,8 +96,6 @@ namespace WatchShop.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-            ViewBag.CustomerId = new SelectList(db.Users, "UserId", "UserName", order.CustomerId);
-            ViewBag.EmployeeId = new SelectList(db.Users, "UserId", "UserName", order.EmployeeId);
             ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
             return View(order);
         }

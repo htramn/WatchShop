@@ -65,18 +65,21 @@
                             <th class="column-5">Status</th>
                             <th class="column-5">Detail</th>
                         </tr>
+                        @foreach (var item in Model.Orders)
+                        {
+                            <tr class="table_row">
+                                <td class="column-5">
+                                    @item.OrderId
+                                </td>
+                                <td class="column-5">@item.OrderDate</td>
+                                <td class="column-5">@item.TotalPayment</td>
+                                <td class="column-5">
+                                    @item.OrderStatus.StatusName
+                                </td>
+                                <td class="column-5"><a class="cl1 hov-cl2" href="#">Detail</a></td>
+                            </tr>
+                        }
 
-                        <tr class="table_row">
-                            <td class="column-5">
-                                012341
-                            </td>
-                            <td class="column-5">20/09/2021</td>
-                            <td class="column-5">$ 36.00</td>
-                            <td class="column-5">
-                                Done
-                            </td>
-                            <td class="column-5"><a class="cl1 hov-cl2" href="#">Detail</a></td>
-                        </tr>
                     </table>
 
 

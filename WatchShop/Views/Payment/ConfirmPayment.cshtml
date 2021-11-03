@@ -180,47 +180,49 @@
     <div class="bor12 m-tb-20">
 
     </div>
-    <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
-        <div class="text-muted">Tạm tính</div>
-        <div class="ml-auto"> <label> @WatchShop.Common.StringHelper.CurrencyFormat(Model.Total)</label> </div>
-    </div>
-    <div class="stext-104 d-flex justify-content-start align-items-center pl-3">
-        <div class="text-muted">Phương thức thanh toán</div>
-        <div class="ml-auto">
-            @Html.DropDownList("MethodId", null, htmlAttributes: new { @class = "size-111 bor4 stext-104 cl2 p-lr-10" })
+    @using (Html.BeginForm("ConfirmPayment", "Payment", FormMethod.Post))
+    {
+        <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
+            <div class="text-muted">Tạm tính</div>
+            <div class="ml-auto"> <label> @WatchShop.Common.StringHelper.CurrencyFormat(Model.Total)</label> </div>
         </div>
-    </div>
+        <div class="stext-104 d-flex justify-content-start align-items-center pl-3">
+            <div class="text-muted">Phương thức thanh toán</div>
+            <div class="ml-auto">
+                @Html.DropDownList("MethodId", null, htmlAttributes: new { @class = "size-111 bor4 stext-104 cl2 p-lr-10" })
+            </div>
+        </div>
 
-    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
-        <div class="text-muted stext-104">Phí vận chuyển</div>
-        <div class="ml-auto stext-104"> <label>Free</label> </div>
-    </div>
+        <div class="d-flex justify-content-start align-items-center py-1 pl-3">
+            <div class="text-muted stext-104">Phí vận chuyển</div>
+            <div class="ml-auto stext-104"> <label>Free</label> </div>
+        </div>
 
-    <div class="d-flex stext-104 justify-content-start align-items-center pb-4 border-bottom">
-        <div class="text-muted">
-            @Html.TextBoxFor(model => model.Coupon.Code, new { @class = "stext-104 cl2 plh4 size-117 bor13 p-lr-15 m-r-10 m-tb-5 txtCoupon", @placeholder = "Mã giảm giá" })
+        <div class="d-flex stext-104 justify-content-start align-items-center pb-4 border-bottom">
+            <div class="text-muted">
+                @Html.TextBoxFor(model => model.Coupon.Code, new { @class = "stext-104 cl2 plh4 size-117 bor13 p-lr-15 m-r-10 m-tb-5 txtCoupon", @placeholder = "Mã giảm giá" })
+
+            </div>
+            <button id="btnAddCoupon" class="flex-c-m stext-104 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">Áp dụng</button>
+            <div class="ml-auto price stext-104"> -@WatchShop.Common.StringHelper.CurrencyFormat(Model.Discount) </div>
+        </div>
+        <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
+            @Html.TextAreaFor(model => model.Note, new { @class = "stext-104 size-110 cl2 plh4 p-t-10 bor4 p-lr-10 m-r-10 m-tb-5", @placeholder = "Ghi chú..." })
+        </div>
+        <div class="bor12 m-tb-20">
 
         </div>
-        <button id="btnAddCoupon" class="flex-c-m stext-104 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">Áp dụng</button>
-        <div class="ml-auto price stext-104"> -@WatchShop.Common.StringHelper.CurrencyFormat(Model.Discount) </div>
-    </div>
-    <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
-        @Html.TextAreaFor(model => model.Note, new { @class = "stext-104 size-110 cl2 plh4 p-t-10 bor4 p-lr-10 m-r-10 m-tb-5", @placeholder = "Ghi chú..." })
-    </div>
-    <div class="bor12 m-tb-20">
+        <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+            <div class="text-muted h5"> Tổng thanh toán </div>
+            <div class="ml-auto h5"> @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment) </div>
+        </div>
 
-    </div>
-    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
-        <div class="text-muted h5"> Tổng thanh toán </div>
-        <div class="ml-auto h5"> @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment) </div>
-    </div>
+        <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+            <div class="text-muted"> </div>
+            <input type="submit" value="Đặt hàng" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" />         
+        </div>
+    }
 
-    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
-        <div class="text-muted"> </div>
-        <a href="@Url.Action("ConfirmPayment","Payment")" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-            Đặt hàng
-        </a>
-    </div>
 
 </div>
 

@@ -79,8 +79,6 @@ D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\System.Web.WebPages.Razor.
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\Newtonsoft.Json.xml
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\Antlr3.Runtime.pdb
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.Migrations.firstCommit.resources
-D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.csproj.GenerateResource.cache
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.csproj.CoreCompileInputs.cache
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.csproj.CopyComplete
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.dll
@@ -95,3 +93,5 @@ D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\CaptchaMvc.pdb
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\CaptchaMvc.xml
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.dll
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.xml
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.Migrations.first.resources
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.csproj.GenerateResource.cache

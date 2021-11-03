@@ -12,35 +12,42 @@ namespace WatchShop.EntityFramework
         [Key]
         public int OrderId { get; set; }
 
-        [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+        [Display(Name ="Khách hàng")]
+        public int UserId { get; set; }
 
-        [ForeignKey("Employee")]
-        public int? EmployeeId { get; set; }
-
+        [Display(Name = "Ngày đặt hàng")]
         public DateTime OrderDate { get; set; }
 
+        [Display(Name = "Trạng thái đơn hàng")]
         [ForeignKey("OrderStatus")]
         public int StatusId { get; set; }
 
+        [Display(Name = "Phương thức thanh toán")]
+        [ForeignKey("PaymentMethod")]
+        public int? MethodId { get; set; }
 
+        [Display(Name = "Mã giảm giá")]
         [ForeignKey("Coupon")]
         public int? CouponId{ get; set; }
 
+        [Display(Name = "Ghi chú")]
         [StringLength(500)]
         public string Note { get; set; }
 
+        [Display(Name = "Tổng thanh toán")]
         public decimal? TotalPayment { get; set; }
+
 
         public virtual OrderStatus OrderStatus { get; set; }
 
         public virtual Coupon Coupon { get; set; }
 
-        public virtual User Customer { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
-
-        public virtual User Employee { get; set; }
+        
+        public virtual PaymentMethod PaymentMethod { get; set; }
 
     }
 }

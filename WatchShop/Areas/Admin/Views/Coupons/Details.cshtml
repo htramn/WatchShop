@@ -1,14 +1,14 @@
 ﻿@model WatchShop.EntityFramework.Coupon
 
 @{
-    ViewBag.Title = "Coupon Details";
+    ViewBag.Title = "Details Coupon";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 
 
 <div>
-    
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,19 +20,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Percent)
+            @Html.DisplayNameFor(model => model.Discount)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Percent)
+            @Html.DisplayFor(model => model.Discount)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.MaxDiscount)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Quantity)
+            @Html.DisplayFor(model => model.MaxDiscount)
         </dd>
 
         <dt>

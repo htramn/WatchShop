@@ -46,7 +46,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CouponId,Code,Percent,Quantity,Status")] Coupon coupon)
+        public ActionResult Create([Bind(Include = "CouponId,Code,Discount,MaxDiscount,Status")] Coupon coupon)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CouponId,Code,Percent,Quantity,Status")] Coupon coupon)
+        public ActionResult Edit([Bind(Include = "CouponId,Code,Discount,MaxDiscount,Status")] Coupon coupon)
         {
             if (ModelState.IsValid)
             {

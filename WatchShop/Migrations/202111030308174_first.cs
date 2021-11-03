@@ -3,7 +3,7 @@ namespace WatchShop.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class firstCommit : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -33,17 +33,21 @@ namespace WatchShop.Migrations
                         UserId = c.Int(nullable: false, identity: true),
                         UserName = c.String(maxLength: 50),
                         Password = c.String(maxLength: 32),
-                        UserRoleId = c.Int(nullable: false),
+                        UserRoleId = c.Int(),
                         Name = c.String(maxLength: 300),
                         Address = c.String(maxLength: 300),
                         Email = c.String(maxLength: 50),
-                        Phone = c.String(maxLength: 11),
-                        ProvinceId = c.Int(),
-                        DistrictId = c.Int(),
+                        Phone = c.String(maxLength: 20),
+                        Province = c.String(),
+                        District = c.String(),
                         Status = c.Boolean(nullable: false),
+                        CreatedDate = c.DateTime(),
+                        CreatedBy = c.String(),
+                        ModifiedDate = c.DateTime(),
+                        ModifiedBy = c.String(),
                     })
                 .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.UserRoles", t => t.UserRoleId, cascadeDelete: true)
+                .ForeignKey("dbo.UserRoles", t => t.UserRoleId)
                 .Index(t => t.UserRoleId);
             
             CreateTable(
@@ -53,9 +57,12 @@ namespace WatchShop.Migrations
                         OrderId = c.Int(nullable: false, identity: true),
                         CustomerId = c.Int(nullable: false),
                         EmployeeId = c.Int(),
-                        OrderDate = c.Int(nullable: false),
+                        OrderDate = c.DateTime(nullable: false),
                         StatusId = c.Int(nullable: false),
+                        MethodId = c.Int(),
                         CouponId = c.Int(),
+                        Note = c.String(maxLength: 500),
+                        TotalPayment = c.Decimal(precision: 18, scale: 2),
                         User_UserId = c.Int(),
                     })
                 .PrimaryKey(t => t.OrderId)
@@ -63,10 +70,11 @@ namespace WatchShop.Migrations
                 .ForeignKey("dbo.Users", t => t.CustomerId, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.EmployeeId)
                 .ForeignKey("dbo.OrderStatus", t => t.StatusId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.User_UserId)
+                .ForeignKey("dbo.PaymentMethods", t => t.MethodId)
                 .Index(t => t.CustomerId)
                 .Index(t => t.EmployeeId)
                 .Index(t => t.StatusId)
+                .Index(t => t.MethodId)
                 .Index(t => t.CouponId)
                 .Index(t => t.User_UserId);
             
@@ -76,11 +84,12 @@ namespace WatchShop.Migrations
                     {
                         CouponId = c.Int(nullable: false, identity: true),
                         Code = c.String(maxLength: 300),
-                        Percent = c.Double(nullable: false),
-                        Quantity = c.Long(nullable: false),
+                        Discount = c.Decimal(precision: 18, scale: 2),
+                        MaxDiscount = c.Decimal(storeType: "money"),
                         Status = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.CouponId);
+                .PrimaryKey(t => t.CouponId)
+                .Index(t => t.Code, unique: true);
             
             CreateTable(
                 "dbo.OrderDetails",
@@ -90,7 +99,7 @@ namespace WatchShop.Migrations
                         OrderId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
                         Quantity = c.Long(nullable: false),
-                        Price = c.Decimal(nullable: false, storeType: "money"),
+                        Price = c.Decimal(storeType: "money"),
                     })
                 .PrimaryKey(t => t.OrderDetailId)
                 .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
@@ -199,6 +208,15 @@ namespace WatchShop.Migrations
                 .PrimaryKey(t => t.OrderStatusId);
             
             CreateTable(
+                "dbo.PaymentMethods",
+                c => new
+                    {
+                        MethodId = c.Int(nullable: false, identity: true),
+                        MethodName = c.String(maxLength: 100),
+                    })
+                .PrimaryKey(t => t.MethodId);
+            
+            CreateTable(
                 "dbo.UserRoles",
                 c => new
                     {
@@ -215,17 +233,22 @@ namespace WatchShop.Migrations
                         Email = c.String(maxLength: 50),
                         Content = c.String(),
                         Status = c.Boolean(nullable: false),
+                        RespondentId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.RespondentId, cascadeDelete: true)
+                .Index(t => t.RespondentId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.ContactEmails", "RespondentId", "dbo.Users");
             DropForeignKey("dbo.Blogs", "ModifiedBy", "dbo.Users");
             DropForeignKey("dbo.Blogs", "CreatedBy", "dbo.Users");
             DropForeignKey("dbo.Users", "UserRoleId", "dbo.UserRoles");
             DropForeignKey("dbo.Orders", "User_UserId", "dbo.Users");
+            DropForeignKey("dbo.Orders", "MethodId", "dbo.PaymentMethods");
             DropForeignKey("dbo.Orders", "StatusId", "dbo.OrderStatus");
             DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Products", "SupplierId", "dbo.Suppliers");
@@ -240,6 +263,7 @@ namespace WatchShop.Migrations
             DropForeignKey("dbo.Orders", "EmployeeId", "dbo.Users");
             DropForeignKey("dbo.Orders", "CustomerId", "dbo.Users");
             DropForeignKey("dbo.Orders", "CouponId", "dbo.Coupons");
+            DropIndex("dbo.ContactEmails", new[] { "RespondentId" });
             DropIndex("dbo.Reviews", new[] { "CustomerId" });
             DropIndex("dbo.Reviews", new[] { "ProductId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
@@ -250,8 +274,10 @@ namespace WatchShop.Migrations
             DropIndex("dbo.Products", new[] { "CreatedBy" });
             DropIndex("dbo.OrderDetails", new[] { "ProductId" });
             DropIndex("dbo.OrderDetails", new[] { "OrderId" });
+            DropIndex("dbo.Coupons", new[] { "Code" });
             DropIndex("dbo.Orders", new[] { "User_UserId" });
             DropIndex("dbo.Orders", new[] { "CouponId" });
+            DropIndex("dbo.Orders", new[] { "MethodId" });
             DropIndex("dbo.Orders", new[] { "StatusId" });
             DropIndex("dbo.Orders", new[] { "EmployeeId" });
             DropIndex("dbo.Orders", new[] { "CustomerId" });
@@ -260,6 +286,7 @@ namespace WatchShop.Migrations
             DropIndex("dbo.Blogs", new[] { "CreatedBy" });
             DropTable("dbo.ContactEmails");
             DropTable("dbo.UserRoles");
+            DropTable("dbo.PaymentMethods");
             DropTable("dbo.OrderStatus");
             DropTable("dbo.Suppliers");
             DropTable("dbo.Reviews");

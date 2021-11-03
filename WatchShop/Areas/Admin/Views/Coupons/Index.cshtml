@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Coupon>
 
 @{
-    ViewBag.Title = "List coupons";
+    ViewBag.Title = "Coupon list";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,21 +9,21 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-bordered table-striped">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Code)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Percent)
+            @Html.DisplayNameFor(model => model.Discount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.MaxDiscount)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>Update</th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -32,10 +32,10 @@
             @Html.DisplayFor(modelItem => item.Code)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Percent)
+            @Html.DisplayFor(modelItem => item.Discount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.DisplayFor(modelItem => item.MaxDiscount)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)

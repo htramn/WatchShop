@@ -48,6 +48,9 @@ namespace WatchShop.EntityFramework
         public string ModifiedBy { get; set; }
 
         public virtual UserRole UserRole { get; set; }
+
+       
         public ICollection<Order> Orders { get; set; }
+
     }
 }
