@@ -31,5 +31,13 @@ namespace WatchShop.DAO
             var Order = db.Orders.Find(id);
             return Order;
         }
+        public int Cancel(int id,int StatusId, string reasonCancel)
+        {
+            var order = db.Orders.Find(id);
+            order.StatusId = StatusId;
+            order.Note = reasonCancel;
+            db.SaveChanges();
+            return order.StatusId;
+        }
     }
 }

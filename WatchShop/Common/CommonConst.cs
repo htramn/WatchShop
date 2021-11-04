@@ -13,7 +13,7 @@ namespace WatchShop.Common
 
         public static int AdminId = 1;
         public static int MemberId = 2;
-        public static int SubAdminId = 3;
+        public static int SubAdminId = 3;     
 
     }
 }

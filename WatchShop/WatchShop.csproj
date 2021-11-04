@@ -165,6 +165,7 @@
     <Compile Include="Areas\Admin\Controllers\SuppliersController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Common\CommonConst.cs" />
+    <Compile Include="Common\OrderStatusConst.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\ReviewDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Migrations\202111030308174_first.cs" />
     <Compile Include="Migrations\202111030308174_first.Designer.cs">
@@ -2879,7 +2881,9 @@
     <Content Include="Assets\Client\images\thumb-03.jpg" />
     <Content Include="Assets\Client\js\controller\addToCart.js" />
     <Content Include="Assets\Client\js\controller\cartController.js" />
+    <Content Include="Assets\Client\js\controller\OrderController.js" />
     <Content Include="Assets\Client\js\controller\PaymentController.js" />
+    <Content Include="Assets\Client\js\controller\reviewController.js" />
     <Content Include="Assets\Client\js\controller\UserController.js" />
     <Content Include="Assets\Client\js\main.js" />
     <Content Include="Assets\Client\js\map-custom.js" />

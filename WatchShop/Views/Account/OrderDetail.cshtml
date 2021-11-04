@@ -9,9 +9,9 @@
         total += item.Price;
     }
     decimal? Discount = 0;
-    if(Model.Coupon!=null)
+    if (Model.Coupon != null)
     {
-        if (total * Model.Coupon.Discount/100>Model.Coupon.MaxDiscount)
+        if (total * Model.Coupon.Discount / 100 > Model.Coupon.MaxDiscount)
         {
             Discount = Model.Coupon.MaxDiscount;
         }
@@ -20,6 +20,8 @@
             Discount = total * Model.Coupon.Discount / 100;
         }
     }
+    int statusDone = WatchShop.Common.OrderStatusConst.HoanThanh;
+    int statusCancel = WatchShop.Common.OrderStatusConst.ChoDuyet;
 }
 
 
@@ -59,6 +61,7 @@
                     <th scope="col">Sản phẩm</th>
                     <th scope="col">Giá</th>
                     <th scope="col" class="text-right">Số lượng</th>
+                    <th scope="col" class="text-right"></th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +71,18 @@
                         <td class="stext-104">@item.Product.ProductName</td>
                         <td class="stext-104"> @WatchShop.Common.StringHelper.CurrencyFormat(item.Product.SalePrice)</td>
                         <td class="text-right stext-104"><b>x @item.Quantity</b></td>
+                        <td class="text-right">
+                            @if (Model.OrderStatus.OrderStatusId == statusDone)
+                            {
+                                <a href="#" data-id="@item.Product.ProductId" class="btnReview stext-104 cl1 hov-cl2">
+                                    Viết nhận xét
+                                </a>
+
+                                @section Script{
+                                    <script src="~/Assets/Client/js/controller/reviewController.js"></script>
+                                }
+                            }
+                        </td>
                     </tr>
 
                 }
@@ -97,16 +112,71 @@
         <div class="text-muted h5"> Tổng cộng </div>
         <div class="ml-auto h5"> @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment) </div>
     </div>
-    @if (Model.StatusId == 1)
+    @if (Model.StatusId == statusCancel)
     {
         <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
             <div class="text-muted"> </div>
-            <a href="@Url.Action("CancelOrder","Account",new { id=Model.OrderId})" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+            <a href="#" data-id="@Model.OrderId" class="btnCancelOrder size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                 Hủy đơn hàng
             </a>
         </div>
+        @section Script{
+
+            <script src="~/Assets/Client/js/controller/OrderController.js"></script>
+        }
     }
 </div>
+
+@*@Url.Action("CancelOrder", "Account", new { id = Model.OrderId })*@
+<!-- Modal hủy đơn hàng -->
+<div class="modal fade m-tb-100" id="ReasonCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lý do hủy đơn hàng #@Model.OrderId</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea id="txtReason" class="form-control"></textarea>
+                @* thẻ tạm bị ẩn lúc click vào thẻ a thì gán id order vào thẻ này, sau đó lấy ra và gửi tới controller  *@
+                <input type="hidden" id="hidOrderID" value="0" />
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" id="btnConfirmCancelOrder" class="  btn btn-secondary ">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Viết nhận xét cho sản phẩm -->
+<div class="modal fade m-tb-100" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="#title">Nhận xét cho sản phẩm </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="customRange2" class="stext-104">Rating: <span id="slider_value"></span></label>
+                <input style="width:100%" type="range" class="form-range m-b-20" min="0" max="5" id="rating">
+
+                <textarea id="txtComment" placeholder="Nhận xét..." rows="3" class="form-control"></textarea>
+                @* thẻ tạm bị ẩn lúc click vào thẻ a thì gán id order vào thẻ này, sau đó lấy ra và gửi tới controller  *@
+                <input type="hidden" id="hidProductID" value="0" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSendReview" class="  btn btn-secondary ">Gửi nhận xét</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
