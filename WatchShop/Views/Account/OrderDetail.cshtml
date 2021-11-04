@@ -1,0 +1,113 @@
+﻿@model WatchShop.EntityFramework.Order
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal? total = 0;
+    foreach (var item in Model.OrderDetails)
+    {
+        total += item.Price;
+    }
+    decimal? Discount = 0;
+    if(Model.Coupon!=null)
+    {
+        if (total * Model.Coupon.Discount/100>Model.Coupon.MaxDiscount)
+        {
+            Discount = Model.Coupon.MaxDiscount;
+        }
+        else
+        {
+            Discount = total * Model.Coupon.Discount / 100;
+        }
+    }
+}
+
+
+@section CSS{
+
+    <link href="~/Assets/Client/css/payment.css" rel="stylesheet" />
+}
+
+<div id="order-heading" class="d-flex border flex-column justify-content-center wrapper m-b-20">
+    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+        <div class="text-uppercase text-muted h5"> Chi tiết đơn hàng #@Model.OrderId - @Model.OrderStatus.StatusName </div>
+        <div class="ml-auto ">  Ngày đặt hàng: @Model.OrderDate.ToString("dd/MM/yyyy") </div>
+    </div>
+    <div class="row border rounded p-1 my-3">
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column stext-104 align-items start">
+
+                <b>Thông tin người nhận:</b>
+                <p class="text-justify pt-2">
+                    Họ tên: @Model.User.Name <br />SĐT: @Model.User.Phone
+                    <br />
+                    Địa chỉ: @Model.User.Address, @Model.User.District, <br /> @Model.User.Province
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 py-3">
+            <div class="d-flex flex-column stext-104 align-items start">
+                <b>Hình thức thanh toán</b>
+                <p class="text-justify pt-2">@Model.PaymentMethod.MethodName</p>
+            </div>
+        </div>
+    </div>
+    <div class=" p-b-10 ">
+        <table class="table">
+            <thead>
+                <tr class="text-uppercase stext-104">
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col" class="text-right">Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr>
+                        <td class="stext-104">@item.Product.ProductName</td>
+                        <td class="stext-104"> @WatchShop.Common.StringHelper.CurrencyFormat(item.Product.SalePrice)</td>
+                        <td class="text-right stext-104"><b>x @item.Quantity</b></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="bor12 m-tb-20">
+
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted">Tạm tính</div>
+        <div class="ml-auto"> <label> @WatchShop.Common.StringHelper.CurrencyFormat(total)</label> </div>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted stext-104">Phí vận chuyển</div>
+        <div class="ml-auto stext-104"> <label>00đ</label> </div>
+    </div>
+    <div class="d-flex justify-content-start align-items-center py-1 pl-3">
+        <div class="text-muted stext-104">Giảm giá</div>
+        <div class="ml-auto stext-104"> <label>-@WatchShop.Common.StringHelper.CurrencyFormat(Discount)</label> </div>
+    </div>
+    <div class="bor12 m-tb-20">
+
+    </div>
+    <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+        <div class="text-muted h5"> Tổng cộng </div>
+        <div class="ml-auto h5"> @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment) </div>
+    </div>
+    @if (Model.StatusId == 1)
+    {
+        <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
+            <div class="text-muted"> </div>
+            <a href="@Url.Action("CancelOrder","Account",new { id=Model.OrderId})" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                Hủy đơn hàng
+            </a>
+        </div>
+    }
+</div>
+
+
+
+

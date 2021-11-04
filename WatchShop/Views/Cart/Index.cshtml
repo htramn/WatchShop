@@ -1,6 +1,6 @@
 ﻿@model List<WatchShop.Models.CartItem>
 @{
-    ViewBag.Title = "Shopping Cart";
+    ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
@@ -29,12 +29,12 @@
 
                             <table class="table-shopping-cart">
                                 <tr class="table_head">
-                                    <th class="column-1">Product</th>
+                                    <th class="column-1">Sản phẩm</th>
                                     <th class="column-2"></th>
-                                    <th class="column-3">Price</th>
-                                    <th class="column-4">Quantity</th>
-                                    <th class="column-5">Total</th>
-                                    <th class="column-5">Update</th>
+                                    <th class="column-3">Giá</th>
+                                    <th class="column-4">Số lượng</th>
+                                    <th class="column-5">Thành tiền</th>
+                                    <th class="column-5">Thao tác</th>
 
                                 </tr>
                                 @foreach (var item in Model)
@@ -85,7 +85,7 @@
                            
 
                             <div id="btnUpdate" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                Update Cart
+                                Cập nhật
                             </div>
                         </div>
                     </div>
@@ -94,13 +94,13 @@
                 <div class="col-sm-10 col-lg-4 col-xl-4 m-lr-auto m-b-50">
                     <div class="bor10 p-lr-25 p-t-30 p-b-40 m-l-40 m-r-40 m-lr-0-xl p-lr-15-sm">
                         <h4 class="mtext-109 cl2 p-b-30">
-                            Cart Totals
+                            Tóm tắt giỏ hàng
                         </h4>
 
                         <div class="flex-w flex-t bor12 p-t-15 p-b-30">
                             <div class="size-208 w-full-ssm">
                                 <span class="stext-110 cl2">
-                                    Shipping:
+                                    Vận chuyển:
                                 </span>
                             </div>
 
@@ -114,7 +114,7 @@
                         <div class="flex-w flex-t p-t-27 p-b-33">
                             <div class="size-208">
                                 <span class="mtext-101 cl2">
-                                    Total:
+                                    Tổng:
                                 </span>
                             </div>
 
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <a href="@Url.Action("ConfirmPayment","Payment")" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                            Proceed to Checkout
+                            Thanh toán
                         </a>
 
                     </div>
@@ -136,8 +136,8 @@
                 <div class="card-body cart">
                     <div class="col-sm-12 empty-cart-cls text-center">
                         <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
-                        <h3><strong>Your Cart is Empty</strong></h3>
-                        <h4>Add something to make me happy :)</h4> <br /> <a href="@Url.Action("ProductList","Product")" class="btn bg3 cl0 bor14 cart-btn-transform hov-btn3" data-abc="true">Continue shopping</a>
+                        <h3><strong>Giỏ hàng của bạn trống.</strong></h3>
+                         <br /> <a href="@Url.Action("ProductList","Product")" class="btn bg3 cl0 bor14 cart-btn-transform hov-btn3" data-abc="true">Continue shopping</a>
                     </div>
                 </div>
             }

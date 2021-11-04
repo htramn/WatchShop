@@ -1,5 +1,5 @@
 ﻿@model WatchShop.ViewModel.ConfirmPayment
-    @using WatchShop.EntityFramework;
+@using WatchShop.EntityFramework;
 @{
     ViewBag.Title = "Xác nhận thanh toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,127 +8,12 @@
 }
 
 @section CSS{
-    <style>
-        #order-heading {
-            position: relative;
-            border-top-left-radius: 25px;
-            max-width: 800px;
-            padding-top: 20px;
-            margin: 30px auto;
-        }
 
-        #order-heading .text-uppercase {
-            font-size: 0.9rem;
-            color: #777;
-            font-weight: 600
-        }
-
-        #order-heading .h4 {
-            font-weight: 600
-        }
-
-        #order-heading .h4+div p {
-            font-size: 0.8rem;
-            color: #777
-        }
-
-        .close {
-            padding: 10px 15px;
-            background-color: #777;
-            border-radius: 50%;
-            position: absolute;
-            right: -15px;
-            top: -20px
-        }
-
-        .wrapper {
-            padding: 0px 50px 50px;
-            max-width: 800px;
-            margin: 0px auto 40px;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px
-        }
-        .table th {
-            border-top: none
-        }
-
-        .table thead tr.text-uppercase th {
-            font-size: 0.8rem;
-            padding-left: 0px;
-            padding-right: 0px
-        }
-
-        .table tbody tr th,
-        .table tbody tr td {
-            font-size: 0.9rem;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-bottom: 5px
-        }
-
-        .table-responsive {
-            height: 100px
-        }
-
-        .list div b {
-            font-size: 0.8rem
-        }
-
-        .list .order-item {
-            font-weight: 600;
-            color: #6db3ec
-        }
-
-        .list:hover {
-            background-color: #f4f4f4;
-            cursor: pointer;
-            border-radius: 5px
-        }
-
-        label {
-            margin-bottom: 0;
-            padding: 0;
-            font-weight: 900
-        }
-
-        button.btn {
-            font-size: 0.9rem;
-            background-color: #66cdaa
-        }
-
-        button.btn:hover {
-            background-color: #5cb99a
-        }
-
-        .price {
-            color: #5cb99a;
-            font-weight: 700
-        }
-
-        p.text-justify {
-            font-size: 0.9rem;
-            margin: 0
-        }
-
-        .row {
-            margin: 0px
-        }
-
-        .subscriptions {
-            border: 1px solid #ddd;
-            border-left: 5px solid #ffa500;
-            padding: 10px
-        }
-
-        .subscriptions div {
-            font-size: 0.9rem
-        }
-
-    </style>
+    <link href="~/Assets/Client/css/payment.css" rel="stylesheet" />
 }
 @section Script{
     <script src="~/Assets/Client/js/controller/PaymentController.js"></script>
-    }
+}
 
 <div id="order-heading" class="d-flex border flex-column justify-content-center wrapper m-b-20">
     <div class="text-uppercase">
@@ -219,7 +104,7 @@
 
         <div class="stext-104 d-flex justify-content-start align-items-center pl-3 py-3 mb-4">
             <div class="text-muted"> </div>
-            <input type="submit" value="Đặt hàng" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" />         
+            <input type="submit" value="Đặt hàng" class="size-125 m-auto m-tb-10 flex-c-m stext-101 cl0 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" />
         </div>
     }
 

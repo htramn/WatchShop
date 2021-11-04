@@ -14,6 +14,6 @@ namespace WatchShop.EntityFramework
         [StringLength(300)]
         public string SupplierName { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -26,5 +26,10 @@ namespace WatchShop.DAO
             db.OrderDetails.Add(OD);
             db.SaveChanges();
         }
+        public Order GetById(int id)
+        {
+            var Order = db.Orders.Find(id);
+            return Order;
+        }
     }
 }

@@ -116,8 +116,8 @@ namespace WatchShop.EntityFramework
 
         public virtual User ModifiedPerson { get; set; }
 
-        public ICollection<OrderDetail> orderDetails { get; set; }
+        public virtual ICollection<OrderDetail> orderDetails { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

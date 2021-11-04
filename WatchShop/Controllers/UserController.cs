@@ -57,6 +57,11 @@ namespace WatchShop.Controllers
             }
             return View(model);
         }
+        public ActionResult Logout()
+        {
+            Session[CommonConst.USER_SESSION] = null;
+            return Redirect("/");
+        }
         public ActionResult Register()
         {
             return View();

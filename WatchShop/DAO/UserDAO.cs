@@ -27,14 +27,13 @@ namespace WatchShop.DAO
             try
             {
                 var user = db.Users.Find(entity.UserId);
+
                 user.Name = entity.Name;
-                if (!string.IsNullOrEmpty(entity.Password))
-                {
-                    user.Password = entity.Password;
-                }
-                user.Address = entity.Address;
                 user.Email = entity.Email;
-                user.ModifiedBy = entity.ModifiedBy;
+                user.Phone = entity.Phone;
+                user.Address = entity.Address;           
+                user.District = entity.District;
+                user.Province = entity.Province;
                 user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
@@ -44,7 +43,6 @@ namespace WatchShop.DAO
                 //logging
                 return false;
             }
-
         }
 
         public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)

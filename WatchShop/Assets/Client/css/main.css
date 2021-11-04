@@ -2003,32 +2003,54 @@ input.num-product::-webkit-inner-spin-button {
     }
 
 /*==================================== order-history ================================ */
-
-.order-history .column-5
+.order-history
 {
-  width: 172px;
-  padding-right: 50px;
-  text-align: right;
-  font-size: 15px;
-
+    padding-left:15px;
+}
+.order-history .column-1 {
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.order-history .column-2 {
+    padding-right: 15px;
+    text-align: center;
+    padding-left: 15px;
+    font-size: 15px;
+}
+.order-history .column-3 {
+    padding: 0px 15px;
+    font-size: 15px;
+    text-align: center;
+}
+.order-history .column-4 {
+    padding: 0px 15px;
+    width: 175px;
+    text-align: center;
+}
+.order-history .column-5 {
+    width: 172px;
+    padding-right: 50px;
+    text-align: center;
+    font-size: 15px;
 }
 
 .order-history .table_row td {
   padding-bottom: 10px;
 }
 .order-history .table_head th {
-  font-family: Poppins-Bold;
-  font-size: 13px;
-  color: #555;
-  text-transform: uppercase;
-  line-height: 1.6;
-  padding-top: 15px;
-  padding-bottom: 15px;
+    font-family: Montserrat-Regular;
+    font-size: 13px;
+    color: #555;
+    text-transform: uppercase;
+    line-height: 1.6;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
-.order-history td{
-  font-family: Poppins-Regular;
-  color: #555;
-  line-height: 1.6;
+.order-history td {
+    font-family: Montserrat-Regular;
+    color: #555;
+    line-height: 1.6;
 }
 /*//////////////////////////////////////////////////////////////////
 [ Block1 ]*/
@@ -2254,9 +2276,9 @@ text-shadow: 2px 2px black;
 }
 
 .stext-110 {
-  font-family: Poppins-Medium;
-  font-size: 15px;
-  line-height: 1.466667;
+    font-family: Montserrat-Regular;
+    font-size: 15px;
+    line-height: 1.466667;
 }
 
 .stext-111 {

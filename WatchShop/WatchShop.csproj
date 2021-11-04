@@ -2777,6 +2777,7 @@
     <Content Include="Assets\Admin\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Assets\Admin\plugins\uplot\uPlot.min.css" />
     <Content Include="Assets\Client\css\main.css" />
+    <Content Include="Assets\Client\css\payment.css" />
     <Content Include="Assets\Client\css\util.css" />
     <Content Include="Assets\Client\data\Provinces_Data.xml" />
     <Content Include="Assets\Client\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -3221,6 +3222,9 @@
     <Content Include="Views\Payment\ConfirmPayment.cshtml" />
     <Content Include="Views\Payment\SuccessPayment.cshtml" />
     <Content Include="Views\Payment\FailedPayment.cshtml" />
+    <Content Include="Views\Account\OrderDetail.cshtml" />
+    <Content Include="Views\Shared\AccountNavigation.cshtml" />
+    <Content Include="Views\Account\AccountManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111030308174_first.resx">

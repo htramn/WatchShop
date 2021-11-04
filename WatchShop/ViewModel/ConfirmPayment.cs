@@ -45,7 +45,7 @@ namespace WatchShop.ViewModel
                 }
                 else
                 {
-                    if (Total * Coupon.Discount > Coupon.MaxDiscount)
+                    if ((Total * Coupon.Discount)/100 > Coupon.MaxDiscount)
                     {
                         return Coupon.MaxDiscount;
 

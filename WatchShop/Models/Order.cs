@@ -45,7 +45,7 @@ namespace WatchShop.EntityFramework
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         
         public virtual PaymentMethod PaymentMethod { get; set; }
 

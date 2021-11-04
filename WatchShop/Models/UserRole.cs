@@ -14,6 +14,6 @@ namespace WatchShop.EntityFramework
         [StringLength(300)]
         public string UserRoleName { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }
