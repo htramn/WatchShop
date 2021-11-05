@@ -50,14 +50,13 @@ namespace WatchShop.Controllers
             dao.Cancel(id, OrderStatusConst.Huy,reasonCacel);
             return RedirectToAction("Index");
         }
-        public ActionResult Rating(int idProduct, long rating,string comment)
+        public ActionResult Rating(int idProduct, string comment)
         {
             User user = GetUser();
             var dao = new ReviewDAO();
             var review = new Review();
             review.Comment = comment;
             review.ProductId = idProduct;
-            review.Rating = rating;
             review.CustomerId = user.UserId;
             dao.Insert(review);
             return RedirectToAction("Index");

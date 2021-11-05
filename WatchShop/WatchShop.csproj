@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\ReviewDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Migrations\202111030308174_first.cs" />
@@ -2796,6 +2797,7 @@
     <Content Include="Assets\Client\images\about-01.jpg" />
     <Content Include="Assets\Client\images\about-02.jpg" />
     <Content Include="Assets\Client\images\avatar-01.jpg" />
+    <Content Include="Assets\Client\images\avatar.png" />
     <Content Include="Assets\Client\images\banner-01.jpg" />
     <Content Include="Assets\Client\images\banner-02.jpg" />
     <Content Include="Assets\Client\images\banner-03.jpg" />

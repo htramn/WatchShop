@@ -18,9 +18,6 @@ namespace WatchShop.EntityFramework
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
 
-        [Range(1,5, ErrorMessage ="Please rating from 1 to 5!")]
-        public long? Rating { get; set; }
-
         [Column(TypeName = "ntext")]
         public string Comment { get; set; }
 

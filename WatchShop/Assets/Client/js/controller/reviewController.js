@@ -11,14 +11,9 @@
             $('#hidProductID').val($(this).data('id'));
         });
 
-        $(document).on('input', '#rating', function () {
-            $('#slider_value').html($(this).val());
-        });
-
 
         $('#btnSendReview').off('click').on('click', function () {
             var idProduct = $('#hidProductID').val();
-            var rating = $('#slider_value').val();
             var comment = $('#txtComment').val();
             console.log(idProduct);
 
@@ -27,8 +22,7 @@
                 type: 'GET',
                 data: {
                     idProduct: idProduct,
-                    comment: comment,
-                    rating:rating
+                    comment: comment
                 },
                 success: function (res) {
                     $('#reviewModal').modal('hide');

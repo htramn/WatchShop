@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml.Linq;
+using WatchShop.DAO;
 using WatchShop.EntityFramework;
 namespace WatchShop.Controllers
 {
@@ -39,11 +40,13 @@ namespace WatchShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            var dao = new ProductDAO();
+            Product product = dao.GetById(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.RelatedProducts = dao.GetRelatedProducts(id);
             return View(product);
         }
 
