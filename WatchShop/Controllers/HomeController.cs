@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using WatchShop.Common;
 using WatchShop.Models;
+using WatchShop.EntityFramework;
+using WatchShop.DAO;
 
 namespace WatchShop.Controllers
 {
@@ -17,17 +19,35 @@ namespace WatchShop.Controllers
 
         public ActionResult About()
         {
-          
-
-            return View();
+           return View();
         }
 
         public ActionResult Contact()
         {
-            
-
+            ContactEmail email = new ContactEmail();
+            return View(email);
+        }
+        [HttpPost]
+        public ActionResult Contact(ContactEmail contactEmail)
+        {
+            ContactEmail email = new ContactEmail();
+            email.Email = contactEmail.Email;
+            email.Content = contactEmail.Content;
+            email.Status = false;
+            ContactDAO dao = new ContactDAO();
+            var result = dao.Insert(email);
+            if (result>0)
+            {
+                ViewBag.Success = "Gửi thành công";
+            }
+            else
+            {
+                ViewBag.Failed = "Gửi thất bại";
+            }
             return View();
         }
+
+
         [ChildActionOnly]
         public PartialViewResult HeaderCart()
         {

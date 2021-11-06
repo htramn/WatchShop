@@ -1,10 +1,11 @@
 ﻿@{
     ViewBag.Title = "Giới thiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/bg-01.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">
+<section class="bg-img1  p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 p-l-90 ">
         Về chúng tôi
     </h2>
 </section>
@@ -17,19 +18,20 @@
             <div class="col-md-7 col-lg-8">
                 <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
                     <h3 class="mtext-111 cl2 p-b-16">
-                        Our Story
+                        Câu chuyện
                     </h3>
 
                     <p class="stext-113 cl6 p-b-26">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+                        Ý tưởng về trang web xuất hiện vì mọi người thường hỏi ý kiến về việc họ nên mua đồng hồ nào. Điều này càng xảy ra - và nó đã xảy ra rất nhiều - chúng tôi càng nhận ra rằng việc tìm kiếm đồng hồ trực tuyến là một bãi mìn thông tin.
                     </p>
 
                     <p class="stext-113 cl6 p-b-26">
-                        Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula.
+                        Các trang web thương hiệu riêng lẻ rất tuyệt, nhưng chỉ riêng ở Việt Nam đã có hàng trăm thương hiệu đồng hồ, vì vậy việc kiểm tra từng trang riêng lẻ sẽ khiến bạn mất hàng tuần và đó là nếu bạn biết tên của tất cả các thương hiệu.
+                        Không có nơi nào bạn thực sự có thể tìm kiếm tất cả đồng hồ mới trên hành tinh, so sánh các mẫu, kiểm tra giá và khám phá các thương hiệu mới ở cùng một nơi. Đó là lý do WatchShop ra đời!
                     </p>
 
                     <p class="stext-113 cl6 p-b-26">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                        Có bất kỳ câu hỏi nào, bạn hãy liên hệ với chúng tôi tại địa chỉ số 225 đường số 8, Linh Xuân, Thủ Đức, Tp. Hồ Chí Minh hoặc gọi điện qua số +84 974 768720
                     </p>
                 </div>
             </div>
@@ -37,7 +39,7 @@
             <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
                 <div class="how-bor1 ">
                     <div class="hov-img0">
-                        <img src="/Assets/Client/images/about-01.jpg" alt="IMG">
+                        <img src="~/Assets/Client/images/about.jpg" alt="IMG">
                     </div>
                 </div>
             </div>
@@ -47,29 +49,39 @@
             <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
                 <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
                     <h3 class="mtext-111 cl2 p-b-16">
-                        Our Mission
+                        Chúng tôi có gì?
                     </h3>
 
                     <p class="stext-113 cl6 p-b-26">
-                        Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
+                        <span class="mtext-104"> 100% đồng hồ chính hãng.</span> Mỗi mặt hàng được bán bởi WatchShop là hàng chính hãng 100%, được cung cấp trực tiếp từ nhà sản xuất cho chúng tôi. Chúng tôi không bán đồng hồ cũ hoặc đồng hồ nhái.
+                    </p>
+                    <p class="stext-113 cl6 p-b-26">
+                        <span class="mtext-104">
+                            Chúng tôi là nhà bán lẻ chính thức cho tất cả các thương hiệu của chúng tôi.
+                        </span>
+                        Điều này có nghĩa là tất cả hàng tồn kho của chúng tôi đến trực tiếp từ nhà sản xuất và do đó đi kèm với hướng dẫn chính xác, bao bì và đảm bảo hợp lệ 100%. Nhiều trang web ngoài kia cho phép các bên thứ ba hoặc người bán độc lập bán trên trang web của họ, họ sẽ nhập khẩu từ ‘chợ xám’ - nghĩa là đồng hồ của bạn có thể đến từ một số quốc gia như Trung Quốc và KHÔNG bao gồm bảo hành chính thức.
                     </p>
 
-                    <div class="bor16 p-l-29 p-b-9 m-t-22">
-                        <p class="stext-114 cl6 p-r-40 p-b-11">
-                            Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
-                        </p>
-
-                        <span class="stext-111 cl8">
-                            - Steve Job’s
+                    <p class="stext-113 cl6 p-b-26">
+                        <span class="mtext-104">
+                            Giao hàng miễn phí.
                         </span>
-                    </div>
+                        Chúng tôi không tính thêm phí giao hàng không giống như các trang web khác và giá cuối cùng trên các trang web của chúng tôi cũng bao gồm phí giao hàng. Chúng tôi giao hàng đến hầu hết các địa điểm trên khắp cả nước.
+                    </p>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        <span class="mtext-104">
+                            100% đặt hàng trực tuyến an toàn.
+                        </span>
+                        Chi tiết thẻ tín dụng của bạn được nhập trực tiếp trên Cổng thanh toán an toàn của Ngân hàng VCB, điều này có nghĩa là chúng không thể bị chặn hoặc bị đọc bởi bất kỳ ai. Ngoài ra, chi tiết thẻ tín dụng của bạn không được lưu trữ với chúng tôi và được đăng nhập trực tiếp vào máy chủ bảo mật của ngân hàng.
+                    </p>
                 </div>
             </div>
 
             <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
                 <div class="how-bor2">
                     <div class="hov-img0">
-                        <img src="/Assets/Client/images/about-02.jpg" alt="IMG">
+                        <img src="~/Assets/Client/images/about2.jpg" alt="IMG">
                     </div>
                 </div>
             </div>

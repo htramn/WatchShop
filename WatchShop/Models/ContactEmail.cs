@@ -20,7 +20,7 @@ namespace WatchShop.EntityFramework
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public bool Status { get; set; }
-        public int RespondentId { get; set; }
+        public int? RespondentId { get; set; }
 
         [ForeignKey("RespondentId")]
         public virtual User Respondent { get; set; }

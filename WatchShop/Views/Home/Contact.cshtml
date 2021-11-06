@@ -1,12 +1,15 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model WatchShop.EntityFramework.ContactEmail
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/bg-01.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">
+<section class="bg-img1  p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 p-l-100 ">
         Liên hệ
     </h2>
 </section>
+
 
 
 <!-- Content page -->
@@ -14,24 +17,44 @@
     <div class="container">
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                <form>
+                @*@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "w-full" }))*@
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                {
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
                         Lời nhắn tới WatchShop
                     </h4>
 
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                    if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.Success</div>
+                    }
+                    if (ViewBag.Failed != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Failed</div>
+                    }
+
                     <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email của bạn">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "stext-111 cl2 plh3 size-116 p-l-62 p-r-30", @placeholder = "Email của bạn", @type = "text", @name = "email" })
+                        @*<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email của bạn">*@
                         <img class="how-pos4 pointer-none" src="/Assets/Client/images/icons/icon-email.png" alt="ICON">
                     </div>
 
                     <div class="bor8 m-b-30">
-                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Chúng tôi có thể giúp gì cho bạn?"></textarea>
+                        @Html.TextAreaFor(model => model.Content, new { @class = "stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25", @placeholder = "Chúng tôi có thể giúp gì cho bạn?" })
+                        @*<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Chúng tôi có thể giúp gì cho bạn?"></textarea>*@
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                    <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
                         Gửi
                     </button>
-                </form>
+
+                }
+
+
             </div>
 
             <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
@@ -90,5 +113,5 @@
 
 <!-- Map -->
 <div class="map m-auto">
-    <iframe class="m-auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4599.52212801349!2d106.77923539929982!3d10.870660932074118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175277dbf11a271%3A0x4567e34b99494e3f!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBLaW5oIHThur8gLSBMdeG6rXQgLSDEkOG6oWkgSOG7jWMgUXXhu5FjIEdpYSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636085547329!5m2!1svi!2s"   height="400" style="border:0;width:100%" allowfullscreen="" loading="lazy"></iframe>
+    <iframe class="m-auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4599.52212801349!2d106.77923539929982!3d10.870660932074118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175277dbf11a271%3A0x4567e34b99494e3f!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBLaW5oIHThur8gLSBMdeG6rXQgLSDEkOG6oWkgSOG7jWMgUXXhu5FjIEdpYSBUaMOgbmggUGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1636085547329!5m2!1svi!2s" height="400" style="border:0;width:100%" allowfullscreen="" loading="lazy"></iframe>
 </div>
