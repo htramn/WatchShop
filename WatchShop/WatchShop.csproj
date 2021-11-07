@@ -72,6 +72,9 @@
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -169,11 +172,14 @@
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAO\BlogDAO.cs" />
     <Compile Include="DAO\ContactDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
@@ -2959,6 +2965,7 @@
     <Content Include="Assets\Client\vendor\slick\slick.js" />
     <Content Include="Assets\Client\vendor\slick\slick.min.js" />
     <Content Include="Assets\Client\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Assets\Client\css\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -3219,7 +3226,6 @@
     <Content Include="Areas\Admin\Views\Coupons\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
-    <Content Include="Views\Product\PromotionProduct.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\Breadcrum.cshtml" />
     <Content Include="Views\Shared\HeaderCart.cshtml" />
@@ -3232,6 +3238,10 @@
     <Content Include="Views\Account\OrderDetail.cshtml" />
     <Content Include="Views\Shared\AccountNavigation.cshtml" />
     <Content Include="Views\Account\AccountManagement.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Detail.cshtml" />
+    <Content Include="Views\Shared\SlideMenuBlog.cshtml" />
+    <Content Include="Views\Promotion\PromotionProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111030308174_first.resx">

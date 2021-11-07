@@ -34,6 +34,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="~/Assets/Client/css/util.css">
     <link rel="stylesheet" type="text/css" href="~/Assets/Client/css/main.css">
+    <link href="~/Assets/Client/css/PagedList.css" rel="stylesheet" />
     @RenderSection("CSS", false)
     <!--===============================================================================================-->
 </head>
@@ -56,28 +57,30 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu">
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home"
+                                && ViewContext.RouteData.Values["Action"].ToString() == "Index"
+                                ? "active-menu" : "")">
                                 @Html.ActionLink("TRANG CHỦ", "Index", "Home")
                             </li>
-                            <li>
+                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active-menu" : "")">
                                 @Html.ActionLink("GIỚI THIỆU", "About", "Home")
                             </li>
-                            <li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Product" ? "active-menu" : "")">
                                 @Html.ActionLink("SẢN PHẨM", "ProductList", "Product")
                                
                             </li>
 
-                            <li class="label1" data-label1="hot">
-                                @Html.ActionLink("KHUYẾN MÃI", "PromotionProduct", "Product")
+                            <li class="label1 @(ViewContext.RouteData.Values["Controller"].ToString() == "Promotion" ? "active-menu" : "")" data-label1="hot">
+                                @Html.ActionLink("KHUYẾN MÃI", "PromotionProduct", "Promotion")
                             </li>
 
-                            <li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Blog" ? "active-menu" : "")">
                                 @Html.ActionLink("BLOG", "Index", "Blog")
                             </li>
 
                            
 
-                            <li>
+                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active-menu" : "")">
                                 @Html.ActionLink("LIÊN HỆ", "Contact", "Home")
                             </li>
                         </ul>

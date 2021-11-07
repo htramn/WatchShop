@@ -10,26 +10,43 @@ using System.Web.Script.Serialization;
 using System.Xml.Linq;
 using WatchShop.DAO;
 using WatchShop.EntityFramework;
+using PagedList;
+
 namespace WatchShop.Controllers
 {
     public class ProductController : Controller
     {
-        private WatchShopContext db = new WatchShopContext();
         // GET: Product
 
-        public ActionResult ProductList()
-        {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Color).Include(p => p.CreatedPerson).Include(p => p.Material).Include(p => p.ModifiedPerson).Include(p => p.Supplier);
-            return View(products.ToList());
+        public ActionResult ProductList(string sortOrder, int? page)
+        {          
+            ProductDAO dao = new ProductDAO();
+            IEnumerable<Product> list;
+            ViewBag.CurrentSort = sortOrder;
+            switch (sortOrder)
+            {
+                case "Newest":
+                    list = dao.Newest();
+                    break;
+                case "BestSeller":
+                    list = dao.BestSeller();
+                    break;
+                case "AscendingPrice":
+                    list = dao.AscendingPrice();
+                    break;
+                case "DescendingPrice":
+                    list = dao.DescendingPrice();
+                    break;
+                default:
+                    list = dao.GetListProducts();
+                    break;
+            }
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(list.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult PromotionProduct()
-        {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Color).Include(p => p.CreatedPerson)
-                                      .Include(p => p.Material).Include(p => p.ModifiedPerson).Include(p => p.Supplier)
-                                      .Where(p=>p.PromotionPrice!=null);
-            return View(products.ToList());
-        }
+     
 
 
 

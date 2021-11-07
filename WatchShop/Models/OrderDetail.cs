@@ -11,13 +11,18 @@ namespace WatchShop.EntityFramework
     {
         [Key]
         public int OrderDetailId { get; set; }
+        [Display(Name = "Mã đơn hàng")]
         [ForeignKey("Order")]
         public int OrderId { get; set; }
+        [Display(Name = "Mã sản phẩm")]
 
         [ForeignKey("Product")]
         public int ProductId { get; set; }
 
+        [Display(Name = "Số lượng")]
         public long Quantity { get; set; }
+
+        [Display(Name = "Giá bán")]
 
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }

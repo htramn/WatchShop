@@ -10,6 +10,7 @@ namespace WatchShop.EntityFramework
     {
         [Key]
         public int SupplierId { get; set; }
+        [Display(Name = "Nhà cung ứng")]
 
         [StringLength(300)]
         public string SupplierName { get; set; }

@@ -8,9 +8,11 @@ namespace WatchShop.EntityFramework
 {
     public class Color
     {
+        [Display(Name = "Mã màu")]
         [Key]
         public int ColorId { get; set; }
 
+        [Display(Name = "Tên màu")]
         [StringLength(300)]
         public string ColorName { get; set; }
 

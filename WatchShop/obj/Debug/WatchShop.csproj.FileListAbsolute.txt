@@ -95,3 +95,5 @@ D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.dll
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.xml
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.Migrations.first.resources
 D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\obj\Debug\WatchShop.csproj.GenerateResource.cache
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.Mvc.dll
+D:\1.1.ĐỒ ÁN THỰC TẬP\WatchShop\WatchShop\bin\PagedList.Mvc.xml

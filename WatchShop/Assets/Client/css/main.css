@@ -2264,9 +2264,9 @@ text-shadow: 2px 2px black;
 }
 
 .stext-108 {
-  font-family: Poppins-Light;
-  font-size: 14px;
-  line-height: 1.7143;
+    font-family: Montserrat-Light;
+    font-size: 14px;
+    line-height: 1.7143;
 }
 
 .stext-109 {
@@ -2313,15 +2313,15 @@ text-shadow: 2px 2px black;
 }
 
 .stext-116 {
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  line-height: 1.266667;
+    font-family: Montserrat-Regular;
+    font-size: 15px;
+    line-height: 1.266667;
 }
 
 .stext-117 {
-  font-family: Poppins-Light;
-  font-size: 15px;
-  line-height: 1.666667;
+    font-family: Montserrat-Light;
+    font-size: 15px;
+    line-height: 1.666667;
 }
 
 
@@ -2718,6 +2718,9 @@ text-shadow: 2px 2px black;
 
 .size-303 {
   height: 390px;
+}
+.size-304{
+    height:1500px;
 }
 
 

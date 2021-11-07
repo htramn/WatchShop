@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WatchShop.DAO;
 using WatchShop.EntityFramework;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
     public class BlogsController : Controller
     {
-        private WatchShopContext db = new WatchShopContext();
 
         // GET: Admin/Blogs
         public ActionResult Index()
         {
-            var blogs = db.Blogs.Include(b => b.CreatedPerson).Include(b => b.ModifiedPerson);
+            var dao = new BlogDAO();
+            var blogs = dao.GetListBlogs();
             return View(blogs.ToList());
         }
 
@@ -28,7 +29,8 @@ namespace WatchShop.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            var dao = new BlogDAO();
+            var blog = dao.GetById(id);
             if (blog == null)
             {
                 return HttpNotFound();
@@ -39,8 +41,9 @@ namespace WatchShop.Areas.Admin.Controllers
         // GET: Admin/Blogs/Create
         public ActionResult Create()
         {
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName");
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName");
+            var dao = new BlogDAO();
+            ViewBag.CreatedBy = new SelectList(dao.db.Users, "UserId", "UserName");
+            ViewBag.ModifiedBy = new SelectList(dao.db.Users, "UserId", "UserName");
             return View();
         }
 
@@ -49,35 +52,37 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogId,Title,Image,Content,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] Blog blog)
+        public ActionResult Create([Bind(Include = "BlogId,Title,Image,Content,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Description")] Blog blog)
         {
+            var dao = new BlogDAO();
             if (ModelState.IsValid)
             {
+                
                 blog.CreatedDate = DateTime.Now;
-                db.Blogs.Add(blog);
-                db.SaveChanges();
+                dao.Insert(blog);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", blog.CreatedBy);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", blog.ModifiedBy);
+            ViewBag.CreatedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.CreatedBy);
+            ViewBag.ModifiedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.ModifiedBy);
             return View(blog);
         }
 
         // GET: Admin/Blogs/Edit/5
         public ActionResult Edit(int? id)
         {
+            var dao = new BlogDAO();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            Blog blog = dao.GetById(id);
             if (blog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", blog.CreatedBy);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", blog.ModifiedBy);
+            ViewBag.CreatedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.CreatedBy);
+            ViewBag.ModifiedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.ModifiedBy);
             return View(blog);
         }
 
@@ -86,28 +91,29 @@ namespace WatchShop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BlogId,Title,Image,Content,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] Blog blog)
+        public ActionResult Edit([Bind(Include = "BlogId,Title,Image,Content,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,Description")] Blog blog)
         {
+            var dao = new BlogDAO();
             if (ModelState.IsValid)
             {
                 blog.ModifiedDate = DateTime.Now;
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
+                dao.Update(blog);
                 return RedirectToAction("Index");
             }
-            ViewBag.CreatedBy = new SelectList(db.Users, "UserId", "UserName", blog.CreatedBy);
-            ViewBag.ModifiedBy = new SelectList(db.Users, "UserId", "UserName", blog.ModifiedBy);
+            ViewBag.CreatedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.CreatedBy);
+            ViewBag.ModifiedBy = new SelectList(dao.db.Users, "UserId", "UserName", blog.ModifiedBy);
             return View(blog);
         }
 
         // GET: Admin/Blogs/Delete/5
         public ActionResult Delete(int? id)
         {
+            var dao = new BlogDAO();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            Blog blog = dao.GetById(id);
             if (blog == null)
             {
                 return HttpNotFound();
@@ -120,17 +126,18 @@ namespace WatchShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Blog blog = db.Blogs.Find(id);
-            db.Blogs.Remove(blog);
-            db.SaveChanges();
+            var dao = new BlogDAO();
+            Blog blog = dao.GetById(id);
+            dao.Delete(blog);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
+            var dao = new BlogDAO();
             if (disposing)
             {
-                db.Dispose();
+                dao.db.Dispose();
             }
             base.Dispose(disposing);
         }

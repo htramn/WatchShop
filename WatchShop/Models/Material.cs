@@ -11,6 +11,7 @@ namespace WatchShop.EntityFramework
         [Key]
         public int MaterialId { get; set; }
 
+        [Display(Name = "Chất liệu")]
         [StringLength(300)]
         public string MaterialName { get; set; }
 

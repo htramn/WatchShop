@@ -10,7 +10,7 @@ namespace WatchShop.EntityFramework
     {
         [Key]
         public int MethodId { get; set; }
-
+        [Display(Name = "Phương thức thanh toán")]
         [StringLength(100)]
         public string MethodName { get; set; }
     }

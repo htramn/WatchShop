@@ -12,6 +12,7 @@ namespace WatchShop.EntityFramework
         public int CategoryId { get; set; }
 
         [StringLength(300)]
+        [Display(Name = "Loại")]
         public string CategoryName { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }

@@ -11,6 +11,8 @@ namespace WatchShop.EntityFramework
         [Key]
         public int OrderStatusId { get; set;}
 
+        [Display(Name = "Tình trạng")]
+
         [StringLength(50)]
         public string StatusName { get; set; }
 

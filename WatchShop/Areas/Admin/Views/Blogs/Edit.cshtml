@@ -20,7 +20,10 @@
             filebrowserBrowseUrl: '/Assets/CkFinder/CKFinder/ckfinder/ckfinder.html',
             filebrowserUploadUrl: '/Assets/CkFinder/CKFinder/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
             filebrowserWindowWidth: '1000',
-            filebrowserWindowHeight: '1000'
+            filebrowserWindowHeight: '2500'
+        });
+        CKEDITOR.replace('Resolution', {
+            height: 2000
         });
     </script>
 
@@ -30,6 +33,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.BlogId)
+    @Html.HiddenFor(model => model.CreatedDate)
+    @Html.HiddenFor(model => model.CreatedBy)
 
     <div class="form-horizontal">
 
@@ -40,6 +46,13 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -55,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @id = "txtContent" }, id = "txtContent" })
+                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control size-304", @id = "txtContent" }, id = "txtContent" })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>

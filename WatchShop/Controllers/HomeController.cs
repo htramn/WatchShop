@@ -14,6 +14,12 @@ namespace WatchShop.Controllers
     {
         public ActionResult Index()
         {
+            BlogDAO blogDao = new BlogDAO();
+            ProductDAO dao = new ProductDAO();
+            ViewBag.BestSeller = dao.BestSeller().Take(10);
+            ViewBag.Newest = dao.Newest().Take(10);
+            ViewBag.Sale = dao.PromotionList().Take(10);
+            ViewBag.Blog = blogDao.GetListBlogs().Take(3);
             return View();
         }
 
