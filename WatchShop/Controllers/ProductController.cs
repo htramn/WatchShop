@@ -41,7 +41,7 @@ namespace WatchShop.Controllers
                     list = dao.GetListProducts();
                     break;
             }
-            int pageSize = 2;
+            int pageSize = 16;
             int pageNumber = (page ?? 1);
             return View(list.ToPagedList(pageNumber, pageSize));
         }

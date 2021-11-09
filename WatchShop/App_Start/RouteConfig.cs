@@ -12,9 +12,16 @@ namespace WatchShop
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
             routes.IgnoreRoute("{*botdetect}",
                                 new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
+            routes.MapRoute(
+                   name: "Search",
+                   url: "tim-kiem",
+                   defaults: new { controller = "Search", action = "Result", id = UrlParameter.Optional },
+                   namespaces: new[] { "WatchShop.Controllers" }
+               );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

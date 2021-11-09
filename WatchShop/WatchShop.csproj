@@ -178,6 +178,7 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAO\BlogDAO.cs" />
     <Compile Include="DAO\ContactDAO.cs" />
@@ -2786,6 +2787,7 @@
     <Content Include="Assets\Admin\plugins\uplot\uPlot.iife.js" />
     <Content Include="Assets\Admin\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Assets\Admin\plugins\uplot\uPlot.min.css" />
+    <Content Include="Assets\Client\css\jquery-ui.css" />
     <Content Include="Assets\Client\css\main.css" />
     <Content Include="Assets\Client\css\payment.css" />
     <Content Include="Assets\Client\css\util.css" />
@@ -2893,7 +2895,9 @@
     <Content Include="Assets\Client\js\controller\OrderController.js" />
     <Content Include="Assets\Client\js\controller\PaymentController.js" />
     <Content Include="Assets\Client\js\controller\reviewController.js" />
+    <Content Include="Assets\Client\js\controller\SearchController.js" />
     <Content Include="Assets\Client\js\controller\UserController.js" />
+    <Content Include="Assets\Client\js\jquery-ui.js" />
     <Content Include="Assets\Client\js\main.js" />
     <Content Include="Assets\Client\js\map-custom.js" />
     <Content Include="Assets\Client\js\slick-custom.js" />
@@ -3242,6 +3246,8 @@
     <Content Include="Views\Blog\Detail.cshtml" />
     <Content Include="Views\Shared\SlideMenuBlog.cshtml" />
     <Content Include="Views\Promotion\PromotionProduct.cshtml" />
+    <Content Include="Views\Search\Result.cshtml" />
+    <Content Include="Views\Shared\CartModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111030308174_first.resx">

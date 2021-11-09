@@ -19,6 +19,11 @@ namespace WatchShop.DAO
         {
             return db.Products.Find(id);
         }
+        public List<string> ListName(string keyword)
+        {
+            return db.Products.Where(x => x.ProductName.ToLower().Contains(keyword.ToLower()))
+                .Select(x => x.ProductName).ToList();
+        }
 
         public IEnumerable<Product> GetRelatedProducts(int? id)
         {
@@ -36,6 +41,17 @@ namespace WatchShop.DAO
             
             return products;
         }
+        public IEnumerable<Product> SearchResult(string searchContent)
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.Color).Include(p => p.CreatedPerson)
+                .Include(p => p.Material).Include(p => p.ModifiedPerson).Include(p => p.Supplier)
+                .Where(p=>p.ProductName.ToLower().Contains(searchContent.ToLower())
+                    || p.Description.ToLower().Contains(searchContent.ToLower()))
+                .OrderBy(p => p.ProductName);
+
+            return products;
+        }
+
         // sản phẩm mới nhất
         public IEnumerable<Product> Newest()
         {
