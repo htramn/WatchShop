@@ -41,10 +41,12 @@ namespace WatchShop.Controllers
                     list = dao.GetListProducts();
                     break;
             }
-            int pageSize = 16;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(list.ToPagedList(pageNumber, pageSize));
         }
+
+      
 
      
 
@@ -58,19 +60,31 @@ namespace WatchShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var dao = new ProductDAO();
+
+
             Product product = dao.GetById(id);
+
+            //Chuyển xml ảnh sang dạng list
+            var images = product.MoreImages;
+            List<string> listImagesReturn = new List<string>();
+            if (images != null)
+            {
+                XElement xImages = XElement.Parse(images);
+                foreach (XElement element in xImages.Elements())
+                {
+                    listImagesReturn.Add(element.Value);
+                }
+            }
+
+
             if (product == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Images = listImagesReturn;
             ViewBag.RelatedProducts = dao.GetRelatedProducts(id);
             return View(product);
         }
 
-        // GET: Product/Create
-
-     
-
-     
     }
 }

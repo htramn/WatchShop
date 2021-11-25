@@ -52,7 +52,7 @@ namespace WatchShop.ViewModel
                     }
                     else
                     {
-                        return Total * Coupon.Discount;
+                        return (Total * Coupon.Discount)/100;
                     }
                 }
 

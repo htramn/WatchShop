@@ -74,6 +74,8 @@
                     html += '<div style="float:left"><img src="' + item + '" width="100" /><a href="#" class="btn-delImage"><i class="fa fa-times"></i></a></div>'
                 });
                 $('#imageList').html(html);
+                var html1 = '<span>Quản lý ảnh của sản phẩm #'+id+'</span>';
+                $('#exampleModalLabel').html(html1)
 
                 $('.btn-delImage').off('click').on('click', function (e) {
                     e.preventDefault();

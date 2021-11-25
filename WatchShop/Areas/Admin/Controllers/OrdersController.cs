@@ -37,33 +37,6 @@ namespace WatchShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Orders/Create
-        public ActionResult Create()
-        {
-            ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code");
-            ViewBag.CustomerId = new SelectList(db.Users, "UserId", "UserName");
-            ViewBag.EmployeeId = new SelectList(db.Users, "UserId", "UserName");
-            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName");
-            return View();
-        }
-
-        // POST: Admin/Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CustomerId,EmployeeId,OrderDate,StatusId,CouponId")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-             ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
-            return View(order);
-        }
 
         // GET: Admin/Orders/Edit/5
         public ActionResult Edit(int? id)
@@ -77,17 +50,13 @@ namespace WatchShop.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-          ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
+            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName");
             return View(order);
         }
 
-        // POST: Admin/Orders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,CustomerId,EmployeeId,OrderDate,StatusId,CouponId")] Order order)
+        public ActionResult Edit([Bind(Include = "OrderId,UserId,OrderDate,StatusId,CouponId,MethodId,Note,TotalPayment")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -95,35 +64,8 @@ namespace WatchShop.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CouponId = new SelectList(db.Coupons, "CouponId", "Code", order.CouponId);
-            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName", order.StatusId);
+            ViewBag.StatusId = new SelectList(db.OrderStatuses, "OrderStatusId", "StatusName");
             return View(order);
-        }
-
-        // GET: Admin/Orders/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

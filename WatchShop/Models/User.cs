@@ -20,6 +20,7 @@ namespace WatchShop.EntityFramework
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
+        [Display(Name = "Vai trò của tài khoản")]
         public int? UserRoleId { set; get; }
 
         [StringLength(300)]
@@ -41,7 +42,7 @@ namespace WatchShop.EntityFramework
         public string Province { set; get; }
         [Display(Name = "Quận/Huyện")]
         public string District { set; get; }
-
+        [Display(Name = "Trạng thái")]
         public bool Status { get; set; }
 
         [Display(Name = "Ngày tạo")]

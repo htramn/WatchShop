@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Blog>
 
 @{
-    ViewBag.Title = "Blog List";
+    ViewBag.Title = "Danh sách Blog";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var stt = 1;
 }
 
 <p>
@@ -30,7 +31,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.BlogId)
+            @(stt++)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)

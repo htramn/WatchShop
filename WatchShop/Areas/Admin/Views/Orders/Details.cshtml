@@ -9,20 +9,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Coupon.Code)
+            @Html.DisplayNameFor(model => model.UserId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Coupon.Code)
+            @Html.DisplayFor(model => model.User.Name)
         </dd>
 
-
         <dt>
-            @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+            Mã đơn hàng
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderStatus.StatusName)
+            @Html.DisplayFor(model => model.OrderId)
         </dd>
 
         <dt>
@@ -33,9 +32,91 @@
             @Html.DisplayFor(model => model.OrderDate)
         </dd>
 
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus.StatusName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MethodId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentMethod.MethodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon.Code)
+        </dt>
+
+        <dd>
+            @if (Model.CouponId == null)
+            {
+                @Html.Raw("Không áp dụng");
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.Coupon.Code)
+            }
+
+        </dd>
+        <dt>
+            @WatchShop.Common.StringHelper.CurrencyFormat(Model.TotalPayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            Sản phẩm
+        </dt>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        Tên sản phẩm
+                    </th>
+                    <th>
+                        Giá
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+
+                </tr>
+                @foreach(var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>
+                        @item.Product.ProductName
+                    </td>
+                    <td>
+                        @item.Product.SalePrice
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                </tr>
+            }
+            </table>
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

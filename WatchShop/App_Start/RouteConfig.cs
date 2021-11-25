@@ -23,6 +23,30 @@ namespace WatchShop
                    namespaces: new[] { "WatchShop.Controllers" }
                );
             routes.MapRoute(
+                   name: "listproduct",
+                   url: "danh-sach-san-pham",
+                   defaults: new { controller = "Product", action = "ProductList", id = UrlParameter.Optional },
+                   namespaces: new[] { "WatchShop.Controllers" }
+               );
+            routes.MapRoute(
+                  name: "aboutUs",
+                  url: "gioi-thieu-ve-watchshop",
+                  defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional },
+                  namespaces: new[] { "WatchShop.Controllers" }
+              );
+            routes.MapRoute(
+                  name: "contact",
+                  url: "lien-he-watchshop",
+                  defaults: new { controller = "Home", action = "Contact", id = UrlParameter.Optional },
+                  namespaces: new[] { "WatchShop.Controllers" }
+              );
+            routes.MapRoute(
+                 name: "detailProduct",
+                 url: "san-pham",
+                 defaults: new { controller = "Product", action = "ProductDetail", id = UrlParameter.Optional },
+                 namespaces: new[] { "WatchShop.Controllers" }
+             );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

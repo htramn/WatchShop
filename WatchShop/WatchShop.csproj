@@ -156,11 +156,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ColorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactEmailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CouponsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
     <Compile Include="Areas\Admin\Controllers\MaterialsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderStatusController.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="Common\CommonConst.cs" />
     <Compile Include="Common\OrderStatusConst.cs" />
     <Compile Include="Common\StringHelper.cs" />
+    <Compile Include="Common\UrlFriendly.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -915,6 +918,7 @@
     <Content Include="Assets\Admin\dist\img\avatar3.png" />
     <Content Include="Assets\Admin\dist\img\avatar4.png" />
     <Content Include="Assets\Admin\dist\img\avatar5.png" />
+    <Content Include="Assets\Admin\dist\img\avtAdmin.jpg" />
     <Content Include="Assets\Admin\dist\img\boxed-bg.jpg" />
     <Content Include="Assets\Admin\dist\img\boxed-bg.png" />
     <Content Include="Assets\Admin\dist\img\credit\american-express.png" />
@@ -3080,7 +3084,6 @@
     <Content Include="Areas\Admin\Views\Materials\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Materials\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Materials\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
@@ -3228,6 +3231,8 @@
     <Content Include="Areas\Admin\Views\Coupons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Coupons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhap\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />

@@ -18,16 +18,19 @@ namespace WatchShop.EntityFramework
         [Display(Name = "Ngày đặt hàng")]
         public DateTime OrderDate { get; set; }
 
-        [Display(Name = "Trạng thái đơn hàng")]
+        
         [ForeignKey("OrderStatus")]
+        [Display(Name = "Trạng thái đơn hàng")]
         public int StatusId { get; set; }
 
-        [Display(Name = "Phương thức thanh toán")]
+       
         [ForeignKey("PaymentMethod")]
+        [Display(Name = "Phương thức thanh toán")]
         public int? MethodId { get; set; }
 
-        [Display(Name = "Mã giảm giá")]
+       
         [ForeignKey("Coupon")]
+        [Display(Name = "Mã giảm giá")]
         public int? CouponId{ get; set; }
 
         [Display(Name = "Ghi chú")]
