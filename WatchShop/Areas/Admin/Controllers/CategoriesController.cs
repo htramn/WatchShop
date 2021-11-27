@@ -10,7 +10,7 @@ using WatchShop.EntityFramework;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
         private WatchShopContext db = new WatchShopContext();
 

@@ -95,10 +95,10 @@ namespace WatchShop.EntityFramework
         [Display(Name = "Người tạo")]
         [ForeignKey("CreatedPerson")]
         public int? CreatedBy { get; set; }
-        [Display(Name = "Người sửa")]
+        [Display(Name = "Ngày cập nhập")]
         public DateTime? ModifiedDate { get; set; }
 
-        [Display(Name = "Ngày sửa")]
+        [Display(Name = "Người cập nhật")]
         [ForeignKey("ModifiedPerson")]
         public int? ModifiedBy { get; set; }
 

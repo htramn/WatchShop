@@ -8,11 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml.Linq;
+using WatchShop.Common;
 using WatchShop.EntityFramework;
+using WatchShop.ViewModel;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         private WatchShopContext db = new WatchShopContext();
 
@@ -57,9 +59,11 @@ namespace WatchShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductId,ProductName,Description,Price,PromotionPrice,Quantity,Image,MoreImages,TopHot,FaceRadius,FaceThickness,WireLength,MaterialId,ColorId,SupplierId,CategoryId")] Product product)
         {
+            UserLogin admin = (UserLogin)Session[CommonConst.USER_SESSION];
             if (ModelState.IsValid)
             {
                 product.CreatedDate = DateTime.Now;
+                product.CreatedBy = admin.UserID;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -100,7 +104,9 @@ namespace WatchShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                UserLogin admin = (UserLogin)Session[CommonConst.USER_SESSION];
                 product.ModifiedDate = DateTime.Now;
+                product.ModifiedBy = admin.UserID;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

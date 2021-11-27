@@ -17,15 +17,15 @@
                     Tất cả
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Women">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".category3">
                     Đồng hồ nữ
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Men">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".category2">
                     Đồng hồ nam
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Couple">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".category1">
                     Đồng hồ đôi
                 </button>
             </div>
@@ -91,7 +91,7 @@
             @foreach (var item in Model)
             {
 
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item  @Html.DisplayFor(modelItem => item.Category.CategoryName)">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item @("category"+item.CategoryId)">
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">

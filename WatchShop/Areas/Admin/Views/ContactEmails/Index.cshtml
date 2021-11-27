@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.ContactEmail>
 
 @{
-    ViewBag.Title = "List feedback";
+    ViewBag.Title = "Phản hồi người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,7 +16,7 @@
         <th>
            Tình trạng
         </th>
-        <th>Update</th>
+        <th>Thao tác</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -39,7 +39,7 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Reply", "Details", new { id=item.Id })
+            @Html.ActionLink("Trả lời", "Details", new { id=item.Id })
         </td>
     </tr>
 }

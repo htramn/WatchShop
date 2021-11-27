@@ -1,7 +1,7 @@
 ﻿@model WatchShop.EntityFramework.User
 
 @{
-    ViewBag.Title = "Create User";
+    ViewBag.Title = "Tạo User";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserRoleId, "UserRoleId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UserRoleId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("UserRoleId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.UserRoleId, "", new { @class = "text-danger" })

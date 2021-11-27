@@ -1,43 +1,43 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Product>
 
 @{
-    ViewBag.Title = "Product List";
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card">
     <div class="card-body">
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Tạo mới", "Create")
         </p>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>
-                        Id
+                        Mã
                     </th>
 
                     <th>
-                        Product Name
+                        Tên sản phẩm
                     </th>
                     <th>
-                        Image
+                        Ảnh
                     </th>
                     <th>
-                        Price
+                        Giá
                     </th>
                     <th>
-                        Category
+                        Loại
                     </th>
                     <th>
-                        Quantity
+                        Tồn kho
                     </th>
                     <th>
-                        Created Date
+                        Ngày tạo
                     </th>
 
                     <th>
-                        Update
+                        Thao tác
                     </th>
                 </tr>
             </thead>
@@ -68,13 +68,13 @@
                             @Html.DisplayFor(modelItem => item.CreatedDate)
                         </td>
                         <td>
-                            <a href="#" data-id="@item.ProductId" class="btn-images">Images</a>
+                            <a href="#" data-id="@item.ProductId" class="btn-images">Quản lý ảnh</a>
                             <br />
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId })
+                            @Html.ActionLink("Cập nhật", "Edit", new { id = item.ProductId })
                             <br />
-                            @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductId })
                             <br />
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.ProductId })
                         </td>
                     </tr>
                 }

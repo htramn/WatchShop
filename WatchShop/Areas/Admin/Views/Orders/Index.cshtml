@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Order>
 
 @{
-    ViewBag.Title = "List Orders";
+    ViewBag.Title = "Đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="card">
@@ -29,7 +29,7 @@
                         @Html.DisplayNameFor(model => model.OrderStatus.StatusName)
                     </th>
 
-                    <th>Update</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
          
@@ -64,9 +64,9 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Update Status", "Edit", new { id = item.OrderId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                        @Html.ActionLink("Cập nhật trạng thái", "Edit", new { id = item.OrderId }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.OrderId }) 
+                      
                     </td>
                 </tr>
             }

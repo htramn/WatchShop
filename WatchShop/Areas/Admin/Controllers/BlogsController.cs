@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WatchShop.Common;
 using WatchShop.DAO;
 using WatchShop.EntityFramework;
+using WatchShop.ViewModel;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
-    public class BlogsController : Controller
+    public class BlogsController : BaseController
     {
 
         // GET: Admin/Blogs
@@ -57,8 +59,9 @@ namespace WatchShop.Areas.Admin.Controllers
             var dao = new BlogDAO();
             if (ModelState.IsValid)
             {
-                
+                UserLogin admin = (UserLogin)Session[CommonConst.USER_SESSION];
                 blog.CreatedDate = DateTime.Now;
+                blog.CreatedBy = admin.UserID;
                 dao.Insert(blog);
                 return RedirectToAction("Index");
             }

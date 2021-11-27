@@ -1,11 +1,15 @@
-﻿using System;
+﻿using BotDetect.Web.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using WatchShop.Common;
 using WatchShop.DAO;
+using WatchShop.EntityFramework;
+using WatchShop.Models;
 using WatchShop.ViewModel;
 
 namespace WatchShop.Areas.Admin.Controllers
@@ -18,9 +22,8 @@ namespace WatchShop.Areas.Admin.Controllers
 
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "UserName,Password")] Login model)
+        [HttpPost]      
+        public ActionResult Login(Login model)
         {
             if (ModelState.IsValid)
             {
@@ -63,11 +66,8 @@ namespace WatchShop.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session[CommonConst.USER_SESSION] = null;
-            return Redirect("/");
+            return View("Login");
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
+      
     }
 }

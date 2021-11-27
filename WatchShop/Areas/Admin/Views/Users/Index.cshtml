@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.User>
 
 @{
-    ViewBag.Title = "List User";
+    ViewBag.Title = "Danh sách tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="card">
     <div class="card-body">
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Tạo mới", "Create")
         </p>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -32,7 +32,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
-                    <th>Update</th>
+                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,9 +60,19 @@
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                            @if (item.UserRoleId == 2)
+                            {
+                                @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Cập nhật", "Edit", new { id = item.UserId })
+                                @Html.Raw("</br>")
+                                @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId })
+                                @Html.Raw("</br>")
+                                @Html.ActionLink("Xóa", "Delete", new { id = item.UserId })
+                            }
+
                         </td>
                     </tr>
                 }

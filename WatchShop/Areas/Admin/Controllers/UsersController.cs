@@ -10,7 +10,7 @@ using WatchShop.EntityFramework;
 
 namespace WatchShop.Areas.Admin.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private WatchShopContext db = new WatchShopContext();
 
@@ -39,7 +39,7 @@ namespace WatchShop.Areas.Admin.Controllers
         // GET: Admin/Users/Create
         public ActionResult Create()
         {
-            ViewBag.UserRoleId = new SelectList(db.UserRoles, "UserRoleId", "UserRoleName");
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.Where(u=>u.UserRoleId!=2), "UserRoleId", "UserRoleName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace WatchShop.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserRoleId = new SelectList(db.UserRoles, "UserRoleId", "UserRoleName", user.UserRoleId);
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.Where(u => u.UserRoleId != 2), "UserRoleId", "UserRoleName", user.UserRoleId);
             return View(user);
         }
 
@@ -73,7 +73,7 @@ namespace WatchShop.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserRoleId = new SelectList(db.UserRoles, "UserRoleId", "UserRoleName", user.UserRoleId);
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.Where(u => u.UserRoleId != 2), "UserRoleId", "UserRoleName", user.UserRoleId);
             return View(user);
         }
 
@@ -90,7 +90,7 @@ namespace WatchShop.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserRoleId = new SelectList(db.UserRoles, "UserRoleId", "UserRoleName", user.UserRoleId);
+            ViewBag.UserRoleId = new SelectList(db.UserRoles.Where(u => u.UserRoleId != 2), "UserRoleId", "UserRoleName", user.UserRoleId);
             return View(user);
         }
 

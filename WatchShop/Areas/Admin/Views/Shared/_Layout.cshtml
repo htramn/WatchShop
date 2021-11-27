@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using WatchShop.Common
+@using WatchShop.ViewModel
+@{ 
+    UserLogin admin = (UserLogin)Session[CommonConst.USER_SESSION];
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -43,7 +48,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Trang chủ</a>
                 </li>
             </ul>
 
@@ -177,7 +182,7 @@
                         <img src="~/Assets/Admin/dist/img/avtAdmin.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">An Nguyễn</a>
+                        <a href="#" class="d-block">@admin.UserName</a>
                     </div>
                 </div>
 
@@ -200,7 +205,7 @@
                         with font-awesome or any other icon font library -->
                         <!-- Dashboard -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="@Url.Action("Index", "DashBoard")" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Thống kê
@@ -297,7 +302,7 @@
                         </li>
                         <!-- Logout -->
                         <li class="nav-item">
-                            <a href="@Url.Action("Logout", "Home")" class="nav-link">
+                            <a href="@Url.Action("Logout", "DangNhap")" class="nav-link">
                                 <i class="nav-icon fa fa-sign-out-alt"></i>
                                 <p>
                                     Đăng xuất
@@ -323,7 +328,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                                 <li class="breadcrumb-item active">@ViewBag.Title</li>
                             </ol>
                         </div>
@@ -358,10 +363,8 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0-rc
-            </div>
-            <strong>Copyright &copy; @DateTime.Now.Year <a href="https://adminlte.io">Watch shop</a>.</strong> All rights reserved.
+
+            <strong>Copyright &copy; @DateTime.Now.Year <a href="/">Watch shop</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -388,46 +391,17 @@
     <script src="~/Assets/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="~/Assets/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="~/Assets/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-
-    <!-- jQuery -->
-    <!-- jQuery UI 1.11.4 -->
-    <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="~/Assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/Assets/Admin/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="~/Assets/Admin/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="~/Assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/Assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="~/Assets/Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="~/Assets/Admin/plugins/moment/moment.min.js"></script>
-    <script src="~/Assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/Assets/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/Assets/Admin/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Assets/Admin/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
     <!-- Page specific script -->
+
+
+
+
+
+
     <!--CKFINDER-->
     <script src="~/Assets/Admin/CkFinder/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/Admin/CkFinder/ckfinder/ckfinder.js"></script>

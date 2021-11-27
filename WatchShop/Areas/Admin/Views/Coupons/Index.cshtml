@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<WatchShop.EntityFramework.Coupon>
 
 @{
-    ViewBag.Title = "Coupon list";
+    ViewBag.Title = "Mã giảm giá";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Code)

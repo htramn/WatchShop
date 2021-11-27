@@ -25,14 +25,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedPerson.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedPerson.UserName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Material.MaterialName)
         </dt>
 
@@ -40,13 +32,7 @@
             @Html.DisplayFor(model => model.Material.MaterialName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedPerson.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedPerson.UserName)
-        </dd>
+      
 
         <dt>
             @Html.DisplayNameFor(model => model.Supplier.SupplierName)
@@ -144,6 +130,13 @@
         <dd>
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedPerson.Name)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.ModifiedDate)
@@ -151,6 +144,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedPerson.Name)
         </dd>
 
     </dl>
